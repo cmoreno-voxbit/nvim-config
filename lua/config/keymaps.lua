@@ -125,6 +125,7 @@ vim.keymap.set("n", "<leader>p", function()
   local dir = vim.fn.expand("%:.")
   local formatted = dir:gsub("/", "."):gsub("%.py$", "")
   local output = "from " .. formatted .. " import"
+  vim.fn.setreg("0", output) -- yank register
   vim.fn.setreg("+", output)
   vim.notify("Relative path copied to clipboard", vim.log.levels.INFO)
 end, { noremap = true, silent = true, desc = "Copy current file directory" })

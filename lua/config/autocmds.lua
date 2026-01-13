@@ -69,5 +69,3 @@ vim.api.nvim_create_autocmd(autosave_events, {
     buf_line_count[bufnr] = vim.api.nvim_buf_line_count(bufnr)
   end,
 })
-
--- Auto-formatting was intentionally removed

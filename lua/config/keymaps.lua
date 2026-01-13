@@ -120,4 +120,11 @@ vim.keymap.set("v", "<leader>r", function()
 end, { desc = "Replace Visually" })
 vim.keymap.set("n", "<leader>m", "<Cmd>Mason<CR>", { noremap = true, silent = true, desc = "Mason" })
 vim.keymap.set("n", "<leader>M", "<Cmd>LazyExtras<CR>", { noremap = true, silent = true, desc = "Lazy Extras" })
+
+vim.keymap.set("n", "<leader>p", function()
+  local dir = vim.fn.expand("%:.")
+  vim.fn.setreg("+", dir)
+  vim.notify("Relative path copied to clipboard", vim.log.levels.INFO)
+end, { noremap = true, silent = true, desc = "Copy current file directory" })
+
 --END OF FILE

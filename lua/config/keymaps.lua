@@ -84,9 +84,10 @@ end, { noremap = true, silent = true, desc = "Indent whole file and return" })
 
 local modes = { "n", "i", "v", "x", "s", "o", "t", "c" }
 for _, mode in ipairs(modes) do
-  vim.keymap.set(mode, "<C-W><Up>", "<NOP>")
-  vim.keymap.set(mode, "<C-W><Down>", "<NOP>")
-  vim.keymap.set(mode, "<C-W><Down>", "<NOP>")
+  vim.keymap.set(mode, "<C-Up>", "<NOP>" , { noremap = true, silent = true })
+  vim.keymap.set(mode, "<C-Down>", "<NOP>" , { noremap = true, silent = true })
+  vim.keymap.set(mode, "<C-W><Up>", "<NOP>" , { noremap = true, silent = true })
+  vim.keymap.set(mode, "<C-W><Down>", "<NOP>" , { noremap = true, silent = true })
 end
 
 vim.keymap.set("n", "<F5>", function()

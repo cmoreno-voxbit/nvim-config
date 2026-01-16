@@ -46,8 +46,6 @@ vim.keymap.set("n", "$", "$a <Esc>", { noremap = true, silent = true })
 vim.keymap.set("n", "<S-a>", "$<Esc>", { noremap = true, silent = true })
 vim.keymap.set("n", "gg", "gg_", { noremap = true, silent = true })
 vim.keymap.set("n", "G", "G_", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>vw", "viw", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>vW", "viW", { noremap = true, silent = true })
 vim.keymap.set(
   "n",
   "<leader><Right>",
@@ -61,12 +59,28 @@ vim.keymap.set(
   { noremap = true, silent = true, desc = "Previous buffer" }
 )
 
-local x_mode = "x" -- Use 'x' to target only Visual mode
-local opts = { remap = true, silent = true }
+-- Configuration for Surround
+local x_mode = "x" --visual mode
+local map_prefix = "<leader>z"
+local base_cmd = "gsa"
 
-vim.keymap.set(x_mode, "<leader>z{", "gsa}h", vim.tbl_extend("force", opts, { desc = "{Selection}" }))
-vim.keymap.set(x_mode, "<leader>z(", "gsa)h", vim.tbl_extend("force", opts, { desc = "(Selection)" }))
-vim.keymap.set(x_mode, "<leader>z[", "gsa]h", vim.tbl_extend("force", opts, { desc = "[Selection]" }))
+local delimiters = {
+  ["{"] = "}",
+  ["("] = ")",
+  ["["] = "]",
+  ["q"] = '"', -- Double Quote
+  ["s"] = "'", -- Single Quote
+  ["b"] = "`", -- Backtick
+}
+
+for trigger, target in pairs(delimiters) do
+  vim.keymap.set(x_mode, map_prefix .. trigger, base_cmd .. target .. "h", {
+    remap = true,
+    silent = true,
+    desc = "with " .. target
+  })
+end
+
 
 local trouble = require("trouble")
 vim.keymap.set("n", "<F2>", function()

@@ -46,6 +46,8 @@ vim.keymap.set("n", "$", "$a <Esc>", { noremap = true, silent = true })
 vim.keymap.set("n", "<S-a>", "$<Esc>", { noremap = true, silent = true })
 vim.keymap.set("n", "gg", "gg_", { noremap = true, silent = true })
 vim.keymap.set("n", "G", "G_", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>vw", "viw", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>vW", "viW", { noremap = true, silent = true })
 vim.keymap.set(
   "n",
   "<leader><Right>",

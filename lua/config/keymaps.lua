@@ -58,8 +58,13 @@ vim.keymap.set(
   "<Cmd>silent! bprevious<CR>",
   { noremap = true, silent = true, desc = "Previous buffer" }
 )
-vim.keymap.set({ "v", "x" }, "Z", "gsa}h", { desc = "Selection → {selection}", remap = true })
-vim.keymap.set({ "v", "x" }, "z", "gsa)h", { desc = "Selection → (selection)", remap = true })
+
+local x_mode = "x" -- Use 'x' to target only Visual mode
+local opts = { remap = true, silent = true }
+
+vim.keymap.set(x_mode, "<leader>z{", "gsa}h", vim.tbl_extend("force", opts, { desc = "{Selection}" }))
+vim.keymap.set(x_mode, "<leader>z(", "gsa)h", vim.tbl_extend("force", opts, { desc = "(Selection)" }))
+vim.keymap.set(x_mode, "<leader>z[", "gsa]h", vim.tbl_extend("force", opts, { desc = "[Selection]" }))
 
 local trouble = require("trouble")
 vim.keymap.set("n", "<F2>", function()
@@ -84,10 +89,10 @@ end, { noremap = true, silent = true, desc = "Indent whole file and return" })
 
 local modes = { "n", "i", "v", "x", "s", "o", "t", "c" }
 for _, mode in ipairs(modes) do
-  vim.keymap.set(mode, "<C-Up>", "<NOP>" , { noremap = true, silent = true })
-  vim.keymap.set(mode, "<C-Down>", "<NOP>" , { noremap = true, silent = true })
-  vim.keymap.set(mode, "<C-W><Up>", "<NOP>" , { noremap = true, silent = true })
-  vim.keymap.set(mode, "<C-W><Down>", "<NOP>" , { noremap = true, silent = true })
+  vim.keymap.set(mode, "<C-Up>", "<NOP>", { noremap = true, silent = true })
+  vim.keymap.set(mode, "<C-Down>", "<NOP>", { noremap = true, silent = true })
+  vim.keymap.set(mode, "<C-W><Up>", "<NOP>", { noremap = true, silent = true })
+  vim.keymap.set(mode, "<C-W><Down>", "<NOP>", { noremap = true, silent = true })
 end
 
 vim.keymap.set("n", "<F5>", function()
@@ -121,7 +126,7 @@ vim.keymap.set("v", "<leader>r", function()
 end, { desc = "Replace Visually" })
 vim.keymap.set("n", "<leader>m", "<Cmd>Mason<CR>", { noremap = true, silent = true, desc = "Mason" })
 vim.keymap.set("n", "<leader>M", "<Cmd>LazyExtras<CR>", { noremap = true, silent = true, desc = "Lazy Extras" })
-vim.keymap.set("n", "<leader>R", function ()
+vim.keymap.set("n", "<leader>R", function()
   vim.cmd("e!")
   vim.notify("Reload!", vim.log.levels.INFO)
 end, { noremap = true, silent = true, desc = "Reaload Edit" })

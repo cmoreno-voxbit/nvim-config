@@ -163,11 +163,8 @@ vim.keymap.set("n", "<F1>", function()
             "from app.utils.debug import print_debug",
             string.format("print_debug(%s)", var)
         }
-        -- Insert lines below current cursor position
         vim.api.nvim_put(lines, "l", true, true)
-        -- Format the newly added lines
-        vim.cmd("normal! 2==")
     end
-end, { noremap = true, silent = true, desc = "Print Debug" })
+end, { noremap = true, silent = true, desc = "Inject debug print" })
 
 --END OF FILE

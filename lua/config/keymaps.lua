@@ -39,7 +39,6 @@ vim.keymap.set("n", "p", "<S-p>", { noremap = true, silent = true })
 vim.keymap.set("n", "P", "ciw<C-r>0<Esc>", { noremap = true, silent = true })
 vim.keymap.set("n", "yy", "0y$", { noremap = true, silent = true })
 vim.keymap.set("n", "Y", "yiw", { noremap = true, silent = true })
--- vim.keymap.set("n", "C", "ciw", { noremap = true, silent = true })
 vim.keymap.set("n", "C", '"_ciw', { noremap = true, silent = true })
 vim.keymap.set({ "n", "v" }, "<PageDown>", "<C-d>zz0", { desc = "Half page down, center" })
 vim.keymap.set({ "n", "v" }, "<PageUp>", "<C-u>zz0", { desc = "Half page up, center" })
@@ -167,5 +166,9 @@ vim.keymap.set("n", "<F1>", function()
         vim.api.nvim_put(lines, "l", true, true)
     end
 end, { noremap = true, silent = true, desc = "Inject debug print" })
+
+vim.keymap.set("n", "<F12>", function()
+    vim.cmd("bd")
+end, { noremap = true, silent = true, desc = "Close buffer" })
 
 --END OF FILE

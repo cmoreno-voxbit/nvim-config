@@ -140,6 +140,7 @@ vim.keymap.set("v", "<leader>r", function()
   vim.api.nvim_win_set_cursor(win, cursor)
   vim.cmd("normal! zz")
 end, { desc = "Replace Visually" })
+
 vim.keymap.set("n", "<leader>m", "<Cmd>Mason<CR>", { noremap = true, silent = true, desc = "Mason" })
 vim.keymap.set("n", "<leader>M", "<Cmd>LazyExtras<CR>", { noremap = true, silent = true, desc = "Lazy Extras" })
 vim.keymap.set("n", "<leader>R", function()
@@ -157,18 +158,27 @@ vim.keymap.set("n", "<leader>p", function()
 end, { noremap = true, silent = true, desc = "Copy current file directory" })
 
 vim.keymap.set("n", "<F1>", function()
-    local var = vim.fn.input("Debug variable: ")
-    if var ~= "" then
-        local lines = {
-            "from app.utils.debug import print_debug",
-            string.format("print_debug(%s)", var)
-        }
-        vim.api.nvim_put(lines, "l", true, true)
-    end
+  local var = vim.fn.input("Debug variable: ")
+  if var ~= "" then
+    local lines = {
+      "from app.utils.debug import print_debug",
+      string.format("print_debug(%s)", var)
+    }
+    vim.api.nvim_put(lines, "l", true, true)
+  end
 end, { noremap = true, silent = true, desc = "Inject debug print" })
 
 vim.keymap.set("n", "<F12>", function()
-    vim.cmd("bd")
+  vim.cmd("bd")
 end, { noremap = true, silent = true, desc = "Close buffer" })
+
+-- Move line/selection down
+vim.keymap.set("n", "<leader><Down>", ":m .+1<CR>==zz", { silent = true, desc = "Move line down" })
+vim.keymap.set("v", "<leader><Down>", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move selection down" })
+
+-- Move line/selection up
+vim.keymap.set("n", "<leader><Up>", ":m .-2<CR>==zz", { silent = true , desc = "Move line up" })
+vim.keymap.set("v", "<leader><Up>", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move selection up" })
+
 
 --END OF FILE

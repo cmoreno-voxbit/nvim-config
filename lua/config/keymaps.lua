@@ -43,7 +43,7 @@ vim.keymap.set("n", "C", '"_ciw', { noremap = true, silent = true })
 vim.keymap.set({ "n", "v" }, "<PageDown>", "<C-d>zz0", { desc = "Half page down, center" })
 vim.keymap.set({ "n", "v" }, "<PageUp>", "<C-u>zz0", { desc = "Half page up, center" })
 vim.keymap.set("n", "$", "$a <Esc>", { noremap = true, silent = true })
--- vim.keymap.set("n", "<S-a>", "$<Esc>", { noremap = true, silent = true })
+vim.keymap.set("n", "<S-a>", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set("n", "gg", "gg_", { noremap = true, silent = true })
 vim.keymap.set("n", "G", "G_", { noremap = true, silent = true })
 vim.keymap.set(

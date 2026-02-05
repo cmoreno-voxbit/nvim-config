@@ -4,6 +4,7 @@ return {
     version = "*",
     keys = {
       { "<leader>t", "<cmd>ToggleTerm<cr>", desc = "Terminal" },
+      { "<leader>T", "<cmd>ToggleTerm<cr>", desc = "Terminal" },
     },
     config = function()
       require("toggleterm").setup({
@@ -12,3 +13,4 @@ return {
     end,
   },
 }
+

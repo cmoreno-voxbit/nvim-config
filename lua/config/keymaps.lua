@@ -42,6 +42,10 @@ vim.keymap.set("n", "Y", "yiw", { noremap = true, silent = true })
 vim.keymap.set("n", "C", '"_ciw', { noremap = true, silent = true })
 vim.keymap.set({ "n", "v" }, "<PageDown>", "<C-d>zz0", { desc = "Half page down, center" })
 vim.keymap.set({ "n", "v" }, "<PageUp>", "<C-u>zz0", { desc = "Half page up, center" })
+vim.keymap.set({ "n", "v" }, "<C-Down>", "<C-d>zz0", { desc = "Half page down, center" })
+vim.keymap.set({ "n", "v" }, "<C-Up>", "<C-u>zz0", { desc = "Half page up, center" })
+vim.keymap.set("n", "<C-S-Up>", "gg_", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-S-Down>", "G_", { noremap = true, silent = true })
 vim.keymap.set("n", "$", "$a <Esc>", { noremap = true, silent = true })
 vim.keymap.set("n", "<S-a>", "a", { noremap = true, silent = true })
 vim.keymap.set("n", "gg", "gg_", { noremap = true, silent = true })
@@ -130,8 +134,6 @@ end, { noremap = true, silent = true, desc = "Indent whole file and return" })
 
 local modes = { "n", "i", "v", "x", "s", "o", "t", "c" }
 for _, mode in ipairs(modes) do
-  vim.keymap.set(mode, "<C-Up>", "<NOP>", { noremap = true, silent = true })
-  vim.keymap.set(mode, "<C-Down>", "<NOP>", { noremap = true, silent = true })
   vim.keymap.set(mode, "<C-W><Up>", "<NOP>", { noremap = true, silent = true })
   vim.keymap.set(mode, "<C-W><Down>", "<NOP>", { noremap = true, silent = true })
 end

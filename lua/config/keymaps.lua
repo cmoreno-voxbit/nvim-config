@@ -48,6 +48,18 @@ vim.keymap.set("n", "gg", "gg_", { noremap = true, silent = true })
 vim.keymap.set("n", "G", "G_", { noremap = true, silent = true })
 vim.keymap.set(
   "n",
+  "<C-Right>",
+  "$",
+  { noremap = true, silent = true, desc = "Next buffer" }
+)
+vim.keymap.set(
+  "n",
+  "<C-Left>",
+  "_",
+  { noremap = true, silent = true, desc = "Previous buffer" }
+)
+vim.keymap.set(
+  "n",
   "<leader><Right>",
   "<Cmd>silent! bnext<CR>",
   { noremap = true, silent = true, desc = "Next buffer" }

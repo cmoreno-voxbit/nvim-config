@@ -3,6 +3,11 @@ vim.o.autowriteall = true
 
 local opt = vim.opt
 
+opt.signcolumn = "auto"
+opt.numberwidth = 2
+opt.cmdheight = 0
+opt.laststatus = 3
+
 if vim.env.SSH_TTY then
   opt.clipboard:append("unnamedplus")
 

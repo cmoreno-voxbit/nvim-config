@@ -53,7 +53,7 @@ vim.keymap.set("n", "G", "G_", { noremap = true, silent = true })
 vim.keymap.set(
   "n",
   "<C-Right>",
-  "w",
+  "e",
   { noremap = true, silent = true, desc = "next word" }
 )
 vim.keymap.set(

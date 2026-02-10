@@ -141,8 +141,9 @@ end
 vim.keymap.set("n", "<F5>", function()
   package.loaded["config.keymaps"] = nil
   require("config.keymaps")
-  vim.notify("Keymaps reloaded!", vim.log.levels.INFO)
-end, { desc = "Reload keymaps" })
+  vim.cmd("e!")
+  vim.notify("Reload!", vim.log.levels.INFO)
+end, { desc = "Reload!" })
 
 vim.keymap.set("n", "<leader>r", function()
   local win = 0
@@ -170,10 +171,7 @@ end, { desc = "Replace Visually" })
 
 vim.keymap.set("n", "<leader>m", "<Cmd>Mason<CR>", { noremap = true, silent = true, desc = "Mason" })
 vim.keymap.set("n", "<leader>M", "<Cmd>LazyExtras<CR>", { noremap = true, silent = true, desc = "Lazy Extras" })
-vim.keymap.set("n", "<leader>R", function()
-  vim.cmd("e!")
-  vim.notify("Reload!", vim.log.levels.INFO)
-end, { noremap = true, silent = true, desc = "Reaload Edit" })
+vim.keymap.set("n", "<leader>R", "<Nop>" , { noremap = true, silent = true})
 
 vim.keymap.set("n", "<leader>p", function()
   local dir = vim.fn.expand("%:.")

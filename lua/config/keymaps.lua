@@ -53,13 +53,13 @@ vim.keymap.set("n", "G", "G_", { noremap = true, silent = true })
 vim.keymap.set(
   "n",
   "<C-Right>",
-  "e",
+  "<Nop>",
   { noremap = true, silent = true, desc = "next word" }
 )
 vim.keymap.set(
   "n",
   "<C-Left>",
-  "b",
+  "<Nop>",
   { noremap = true, silent = true, desc = "back word" }
 )
 

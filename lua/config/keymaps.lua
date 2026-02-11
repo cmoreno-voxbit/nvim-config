@@ -42,8 +42,6 @@ vim.keymap.set("n", "Y", "yiw", { noremap = true, silent = true })
 vim.keymap.set("n", "C", '"_ciw', { noremap = true, silent = true })
 vim.keymap.set({ "n", "v" }, "<PageDown>", "<C-d>zz0", { desc = "Half page down, center" })
 vim.keymap.set({ "n", "v" }, "<PageUp>", "<C-u>zz0", { desc = "Half page up, center" })
-vim.keymap.set({ "n", "v" }, "<C-Down>", "<Nop>", { desc = "Half page down, center" })
-vim.keymap.set({ "n", "v" }, "<C-Up>", "<Nop>", { desc = "Half page up, center" })
 vim.keymap.set("n", "<C-S-Up>", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-S-Down>", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set("n", "$", "$a <Esc>", { noremap = true, silent = true })
@@ -204,6 +202,15 @@ vim.keymap.set("v", "<leader><Down>", ":m '>+1<CR>gv=gv", { silent = true, desc 
 -- Move line/selection up
 vim.keymap.set("n", "<leader><Up>", ":m .-2<CR>==zz", { silent = true , desc = "Move line up" })
 vim.keymap.set("v", "<leader><Up>", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move selection up" })
+
+-- Terminal
+vim.keymap.set({ "n", "t" }, "<C-Up>", [[<C-\><C-n><C-w>k]], { desc = "Move Up", remap = false })
+vim.keymap.set({ "n", "t" }, "<C-Down>", [[<C-\><C-n><C-w>j]], { desc = "Move Down", remap = false })
+
+-- RESIZE: Stretch the windows
+vim.keymap.set("n", "<C-S-Up>", ":resize +2<CR>", { desc = "Make Taller", remap = false })
+vim.keymap.set("n", "<C-S-Down>", ":resize -2<CR>", { desc = "Make Shorter", remap = false })
+
 
 
 --END OF FILE

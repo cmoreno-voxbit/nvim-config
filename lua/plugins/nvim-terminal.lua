@@ -12,7 +12,7 @@ return {
         shade_terminals = true,
         insert_mappings = true,
         terminal_mappings = true,
-        start_in_insert = true,
+        start_in_insert = false,
       })
 
       function _G.set_terminal_keymaps()

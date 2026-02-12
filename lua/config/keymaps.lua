@@ -181,15 +181,27 @@ vim.keymap.set("n", "<leader>p", function()
   vim.notify("Relative path copied to clipboard", vim.log.levels.INFO)
 end, { noremap = true, silent = true, desc = "Copy current file directory" })
 
-vim.keymap.set("n", "<F1>", function()
+vim.keymap.set({ "n", "i" }, "<F1>", function()
   local var = vim.fn.input("Print: ")
-  if var ~= "" then
-    local lines = {
-      string.format('print(f"%s={%s}")', var, var)
-    }
-    vim.api.nvim_put(lines, "l", true, true)
+  if var == "" then
+    return
   end
+
+  local line = string.format('print(f"%s={%s}")', var, var)
+
+  -- If in insert mode, exit first
+  if vim.api.nvim_get_mode().mode:match("^i") then
+    vim.api.nvim_feedkeys(
+      vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
+      "n",
+      true
+    )
+  end
+
+  -- Insert below current line
+  vim.api.nvim_put({ line }, "l", true, true)
 end, { noremap = true, silent = true, desc = "Print variable" })
+
 
 vim.keymap.set("n", "<F12>", function()
   vim.cmd("bd")

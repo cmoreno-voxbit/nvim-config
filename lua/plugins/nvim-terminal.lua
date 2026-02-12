@@ -2,10 +2,6 @@ return {
   {
     "akinsho/toggleterm.nvim",
     version = "*",
-    keys = {
-      { "<leader>t", "<cmd>1ToggleTerm<cr>", desc = "Terminal" },
-      { "<leader>T", "<cmd>1ToggleTerm<cr>", desc = "Terminal" },
-    },
     config = function()
       require("toggleterm").setup({
         size = 60,

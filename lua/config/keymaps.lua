@@ -207,13 +207,6 @@ vim.keymap.set("n", "<F12>", function()
   vim.cmd("bd")
 end, { noremap = true, silent = true, desc = "Close buffer" })
 
--- Move line/selection down
-vim.keymap.set("n", "<leader><Down>", ":m .+1<CR>==zz", { silent = true, desc = "Move line down" })
-vim.keymap.set("v", "<leader><Down>", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move selection down" })
-
--- Move line/selection up
-vim.keymap.set("n", "<leader><Up>", ":m .-2<CR>==zz", { silent = true , desc = "Move line up" })
-vim.keymap.set("v", "<leader><Up>", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move selection up" })
 
 -- Terminal
 vim.keymap.set({ "n", "t" }, "<C-Up>", [[<C-\><C-n><C-w>k]], { desc = "Move Up", remap = false })

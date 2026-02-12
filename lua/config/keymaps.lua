@@ -181,15 +181,14 @@ vim.keymap.set("n", "<leader>p", function()
 end, { noremap = true, silent = true, desc = "Copy current file directory" })
 
 vim.keymap.set("n", "<F1>", function()
-  local var = vim.fn.input("Debug variable: ")
+  local var = vim.fn.input("Print: ")
   if var ~= "" then
     local lines = {
-      "from app.utils.debug import print_debug",
-      string.format("print_debug(%s)", var)
+      string.format('print(f"%s={%s}")', var, var)
     }
     vim.api.nvim_put(lines, "l", true, true)
   end
-end, { noremap = true, silent = true, desc = "Inject debug print" })
+end, { noremap = true, silent = true, desc = "Print variable" })
 
 vim.keymap.set("n", "<F12>", function()
   vim.cmd("bd")

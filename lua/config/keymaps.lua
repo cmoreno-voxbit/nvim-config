@@ -63,13 +63,13 @@ vim.keymap.set(
 )
 
 vim.keymap.set(
-  "n",
+  {"n","v"},
   "<C-S-Right>",
   "$",
   { noremap = true, silent = true, desc = "End of line" }
 )
 vim.keymap.set(
-  "n",
+  {"n","v"},
   "<C-S-Left>",
   "_",
   { noremap = true, silent = true, desc = "Start of line" }

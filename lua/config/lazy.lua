@@ -16,19 +16,14 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = {
-    -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-    -- completely disable nvim-autopairs
     { "windwp/nvim-autopairs", enabled = false },
-    -- completely disable neo-tree
+    { "folke/flash.nvim", enabled = false },
     { "nvim-neo-tree/neo-tree.nvim", enabled = false },
-    -- import/override with your custom plugins
     { import = "plugins" },
   },
   defaults = {
-    -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
     lazy = false,
-    -- always use the latest git commit
     version = false,
   },
   install = { colorscheme = { "tokyonight", "habamax" } },
@@ -38,12 +33,8 @@ require("lazy").setup({
   },
   performance = {
     rtp = {
-      -- disable some default rtp plugins
       disabled_plugins = {
         "gzip",
-        -- "matchit",
-        -- "matchparen",
-        -- "netrwPlugin",
         "tarPlugin",
         "tohtml",
         "tutor",

@@ -1,20 +1,14 @@
 -- keymaps.lua
 vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "Find Files" })
-vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "Find Files" })
 vim.keymap.set("n", "<leader>fg", require("telescope.builtin").live_grep, { desc = "Find Grep" })
 vim.keymap.set("n", "D", '"_ld$', { desc = "Delete until EOL (exclude cursor)" })
 vim.keymap.set({ "n", "x" }, "d", '"_d', { noremap = true, silent = true, desc = "Delete without yanking" })
 vim.keymap.set("n", "dd", '"_dd', { noremap = true, silent = true, desc = "Delete line without yanking" })
-vim.keymap.set("n", "<C-j>", "<Cmd>cnext<CR>", { noremap = true, silent = true, desc = "Next Quickfix" })
-vim.keymap.set("n", "<C-k>", "<Cmd>cprev<CR>", { noremap = true, silent = true, desc = "Previous Quickfix" })
-vim.keymap.set("n", "<C-Q>", "<Cmd>cclose<CR>", { noremap = true, silent = true, desc = "Close Quickfix" })
 vim.keymap.set("n", "$", "$h", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-d>", "<Cmd>normal! <C-d>zz0<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-u>", "<Cmd>normal! <C-u>zz0<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "j", "j0wzz", { noremap = true, silent = true })
-vim.keymap.set("n", "k", "k0wzz", { noremap = true, silent = true })
-vim.keymap.set({"n","v","x"}, "<Up>", "<Up>zz", { noremap = true, silent = true })
-vim.keymap.set({"n","v","x"}, "<Down>", "<Down>zz", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v", "x" }, "<Up>", "<Up>zz", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v", "x" }, "<Down>", "<Down>zz", { noremap = true, silent = true })
 vim.keymap.set("n", "<S-Up>", "<Up>0_zz", { noremap = true, silent = true })
 vim.keymap.set("n", "<S-Down>", "<Down>0_zz", { noremap = true, silent = true })
 vim.keymap.set("n", "<BS>", "_zz", { noremap = true, silent = true })
@@ -25,10 +19,7 @@ vim.keymap.set("v", "G", "G}", { noremap = true, silent = true })
 vim.keymap.set("n", "gg", "gg{", { noremap = true, silent = true })
 vim.keymap.set("v", "gg", "gg{", { noremap = true, silent = true })
 vim.keymap.set({ "n", "i", "v" }, "<Home>", "_", { noremap = true, silent = true })
-vim.keymap.set("n", "<Insert>", "<Nop>", { noremap = true, silent = true })
-vim.keymap.set("i", "<Insert>", "<Nop>", { noremap = true, silent = true })
-vim.keymap.set("v", "<Insert>", "<Nop>", { noremap = true, silent = true })
-vim.keymap.set("c", "<Insert>", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set({"i","n","v","c"}, "<Insert>", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set({ "n", "i", "v", "x", "o", "c", "t" }, "<F1>", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set({ "n", "i", "v", "x", "o", "c", "t" }, "<C-/>", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set("n", "Q", "<Nop>", { noremap = true })
@@ -49,31 +40,10 @@ vim.keymap.set("n", "$", "$a <Esc>", { noremap = true, silent = true })
 vim.keymap.set("n", "<S-a>", "a", { noremap = true, silent = true })
 vim.keymap.set("n", "gg", "gg_", { noremap = true, silent = true })
 vim.keymap.set("n", "G", "G_", { noremap = true, silent = true })
-vim.keymap.set(
-  "n",
-  "<C-Right>",
-  "<Nop>",
-  { noremap = true, silent = true, desc = "next word" }
-)
-vim.keymap.set(
-  "n",
-  "<C-Left>",
-  "<Nop>",
-  { noremap = true, silent = true, desc = "back word" }
-)
-
-vim.keymap.set(
-  {"n","v"},
-  "<C-S-Right>",
-  "$",
-  { noremap = true, silent = true, desc = "End of line" }
-)
-vim.keymap.set(
-  {"n","v"},
-  "<C-S-Left>",
-  "_",
-  { noremap = true, silent = true, desc = "Start of line" }
-)
+vim.keymap.set("n", "<C-Right>", "<Nop>", { noremap = true, silent = true, desc = "next word" })
+vim.keymap.set("n", "<C-Left>", "<Nop>", { noremap = true, silent = true, desc = "back word" })
+vim.keymap.set({ "n", "v" }, "<C-S-Right>", "$", { noremap = true, silent = true, desc = "End of line" })
+vim.keymap.set({ "n", "v" }, "<C-S-Left>", "_", { noremap = true, silent = true, desc = "Start of line" })
 vim.keymap.set(
   "n",
   "<leader><Right>",
@@ -105,10 +75,9 @@ for trigger, target in pairs(delimiters) do
   vim.keymap.set(x_mode, map_prefix .. trigger, base_cmd .. target .. "h", {
     remap = true,
     silent = true,
-    desc = "with " .. target
+    desc = "with " .. target,
   })
 end
-
 
 local trouble = require("trouble")
 vim.keymap.set("n", "<F2>", function()
@@ -170,7 +139,7 @@ end, { desc = "Replace Visually" })
 
 vim.keymap.set("n", "<leader>m", "<Cmd>Mason<CR>", { noremap = true, silent = true, desc = "Mason" })
 vim.keymap.set("n", "<leader>M", "<Cmd>LazyExtras<CR>", { noremap = true, silent = true, desc = "Lazy Extras" })
-vim.keymap.set("n", "<leader>R", "<Nop>" , { noremap = true, silent = true})
+vim.keymap.set("n", "<leader>R", "<Nop>", { noremap = true, silent = true })
 
 vim.keymap.set("n", "<leader>p", function()
   local dir = vim.fn.expand("%:.")
@@ -191,22 +160,16 @@ vim.keymap.set({ "n", "i" }, "<F1>", function()
 
   -- If in insert mode, exit first
   if vim.api.nvim_get_mode().mode:match("^i") then
-    vim.api.nvim_feedkeys(
-      vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
-      "n",
-      true
-    )
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
   end
 
   -- Insert below current line
   vim.api.nvim_put({ line }, "l", true, true)
 end, { noremap = true, silent = true, desc = "Print variable" })
 
-
 vim.keymap.set("n", "<F12>", function()
   vim.cmd("bd")
 end, { noremap = true, silent = true, desc = "Close buffer" })
-
 
 -- Terminal
 vim.keymap.set({ "n", "t" }, "<C-Up>", [[<C-\><C-n><C-w>k]], { desc = "Move Up", remap = false })
@@ -215,7 +178,5 @@ vim.keymap.set({ "n", "t" }, "<C-Down>", [[<C-\><C-n><C-w>j]], { desc = "Move Do
 -- RESIZE: Stretch the windows
 vim.keymap.set("n", "<C-S-Up>", ":resize +2<CR>", { desc = "Make Taller", remap = false })
 vim.keymap.set("n", "<C-S-Down>", ":resize -2<CR>", { desc = "Make Shorter", remap = false })
-
-
 
 --END OF FILE

@@ -4,7 +4,6 @@ return {
     version = "*",
     config = function()
       require("toggleterm").setup({
-        size = 60,
         shade_terminals = true,
         insert_mappings = true,
         terminal_mappings = true,

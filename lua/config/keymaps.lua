@@ -156,7 +156,13 @@ vim.keymap.set({ "n", "i" }, "<F1>", function()
     return
   end
 
-  local line = string.format('print(f"%s={%s}")', var, var)
+  -- Get current cursor position
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local current_line = vim.api.nvim_get_current_line()
+  local indent = current_line:match("^%s*") or ""
+
+  -- Build the print line with proper indentation
+  local line = indent .. string.format('print(f"%s={%s}")', var, var)
 
   -- If in insert mode, exit first
   if vim.api.nvim_get_mode().mode:match("^i") then
@@ -167,17 +173,14 @@ vim.keymap.set({ "n", "i" }, "<F1>", function()
     )
   end
 
-  -- Get cursor position
-  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-
-  -- Insert text at cursor position
+  -- Insert text at the beginning of the current line
   vim.api.nvim_buf_set_text(
-    0,            -- current buffer
-    row - 1,      -- line (0-indexed)
-    col,          -- start column
-    row - 1,      -- end line
-    col,          -- end column
-    { line }      -- text to insert
+    0,          -- current buffer
+    row - 1,    -- line (0-indexed)
+    0,          -- start column (align with line indentation)
+    row - 1,    -- end line
+    0,          -- end column
+    { line }    -- text to insert
   )
 end)
 

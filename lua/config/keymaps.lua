@@ -160,12 +160,26 @@ vim.keymap.set({ "n", "i" }, "<F1>", function()
 
   -- If in insert mode, exit first
   if vim.api.nvim_get_mode().mode:match("^i") then
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+    vim.api.nvim_feedkeys(
+      vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
+      "n",
+      true
+    )
   end
 
-  -- Insert below current line
-  vim.api.nvim_put({ line }, "l", true, true)
-end, { noremap = true, silent = true, desc = "Print variable" })
+  -- Get cursor position
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+
+  -- Insert text at cursor position
+  vim.api.nvim_buf_set_text(
+    0,            -- current buffer
+    row - 1,      -- line (0-indexed)
+    col,          -- start column
+    row - 1,      -- end line
+    col,          -- end column
+    { line }      -- text to insert
+  )
+end)
 
 vim.keymap.set("n", "<F12>", function()
   vim.cmd("bd")

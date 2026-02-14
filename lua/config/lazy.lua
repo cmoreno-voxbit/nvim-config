@@ -19,6 +19,22 @@ require("lazy").setup({
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     { "windwp/nvim-autopairs", enabled = false },
     { "folke/flash.nvim", enabled = false },
+    {
+      "neovim/nvim-lspconfig",
+      opts = {
+        servers = {
+          pyright = {
+            settings = {
+              python = {
+                analysis = {
+                  reportDeprecated = "none",
+                },
+              },
+            },
+          },
+        },
+      },
+    },
     { "nvim-neo-tree/neo-tree.nvim", enabled = false },
     { import = "plugins" },
   },

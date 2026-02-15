@@ -5,6 +5,7 @@
     "lazyvim.plugins.extras.editor.mini-move",
     "lazyvim.plugins.extras.editor.navic",
     "lazyvim.plugins.extras.lang.python",
+    "lazyvim.plugins.extras.lang.ruby",
     "lazyvim.plugins.extras.ui.alpha",
     "lazyvim.plugins.extras.ui.dashboard-nvim",
     "lazyvim.plugins.extras.ui.edgy",

@@ -192,7 +192,14 @@ vim.keymap.set({ "n", "i" }, "<F1>", function()
   )
 end)
 
-vim.keymap.set("n", "<F12>", function()
+-- Close current buffer
+vim.keymap.set({"n","i","t"}, "<F12>", function()
+  local mode = vim.fn.mode()
+  if mode == "i" then
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+  elseif mode == "t" then
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true), "n", true)
+  end
   vim.cmd("bd!")
 end, { noremap = true, silent = true, desc = "Close buffer" })
 

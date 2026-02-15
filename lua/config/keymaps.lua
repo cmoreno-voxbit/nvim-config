@@ -57,6 +57,14 @@ vim.keymap.set(
   { noremap = true, silent = true, desc = "Previous buffer" }
 )
 
+vim.keymap.set(
+  "n",
+  "tt",
+  "<Cmd>enew | terminal<CR>i",
+  { noremap = true, silent = true, desc = "Open Terminal in a New Buffer" }
+)
+
+
 -- Configuration for Surround
 local x_mode = "x" --visual mode
 local map_prefix = "<leader>z"
@@ -185,7 +193,7 @@ vim.keymap.set({ "n", "i" }, "<F1>", function()
 end)
 
 vim.keymap.set("n", "<F12>", function()
-  vim.cmd("bd")
+  vim.cmd("bd!")
 end, { noremap = true, silent = true, desc = "Close buffer" })
 
 -- Terminal

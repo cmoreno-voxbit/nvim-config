@@ -156,7 +156,7 @@ vim.keymap.set("n", "<leader>p", function()
 end, { noremap = true, silent = true, desc = "Copy current file directory" })
 
 vim.keymap.set({ "n", "i" }, "<F1>", function()
-  local var = vim.fn.input("Print: ")
+  local var = vim.fn.input("(Python) Print: ")
   if var == "" then
     return
   end
@@ -183,6 +183,36 @@ vim.keymap.set({ "n", "i" }, "<F1>", function()
     { line }    -- text to insert
   )
 end)
+
+vim.keymap.set({ "n", "i" }, "<F2>", function()
+  local var = vim.fn.input("(Ruby) Print: ")
+  if var == "" then
+    return
+  end
+
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local current_line = vim.api.nvim_get_current_line()
+  local indent = current_line:match("^%s*") or ""
+  local line = indent .. string.format('puts "%s={%s}"', var, var)
+
+  if vim.api.nvim_get_mode().mode:match("^i") then
+    vim.api.nvim_feedkeys(
+      vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
+      "n",
+      true
+    )
+  end
+
+  vim.api.nvim_buf_set_text(
+    0,          -- current buffer
+    row - 1,    -- line (0-indexed)
+    0,          -- start column (align with line indentation)
+    row - 1,    -- end line
+    0,          -- end column
+    { line }    -- text to insert
+  )
+end)
+
 
 vim.keymap.set({"n","i","t"}, "<F12>", function()
   local mode = vim.fn.mode()

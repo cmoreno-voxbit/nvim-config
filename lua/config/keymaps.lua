@@ -1,4 +1,3 @@
--- keymaps.lua
 vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "Find Files" })
 vim.keymap.set("n", "<leader>fg", require("telescope.builtin").live_grep, { desc = "Find Grep" })
 vim.keymap.set("n", "D", '"_ld$', { desc = "Delete until EOL (exclude cursor)" })
@@ -64,9 +63,7 @@ vim.keymap.set(
   { noremap = true, silent = true, desc = "Open Terminal in a New Buffer" }
 )
 
-
--- Configuration for Surround
-local x_mode = "x" --visual mode
+local x_mode = "x"
 local map_prefix = "<leader>z"
 local base_cmd = "gsa"
 
@@ -74,9 +71,9 @@ local delimiters = {
   ["{"] = "}",
   ["("] = ")",
   ["["] = "]",
-  ["q"] = '"', -- Double Quote
-  ["s"] = "'", -- Single Quote
-  ["b"] = "`", -- Backtick
+  ["q"] = '"',
+  ["s"] = "'",
+  ["b"] = "`",
 }
 
 for trigger, target in pairs(delimiters) do
@@ -164,15 +161,11 @@ vim.keymap.set({ "n", "i" }, "<F1>", function()
     return
   end
 
-  -- Get current cursor position
   local row, col = unpack(vim.api.nvim_win_get_cursor(0))
   local current_line = vim.api.nvim_get_current_line()
   local indent = current_line:match("^%s*") or ""
-
-  -- Build the print line with proper indentation
   local line = indent .. string.format('print(f"%s={%s}")', var, var)
 
-  -- If in insert mode, exit first
   if vim.api.nvim_get_mode().mode:match("^i") then
     vim.api.nvim_feedkeys(
       vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
@@ -181,7 +174,6 @@ vim.keymap.set({ "n", "i" }, "<F1>", function()
     )
   end
 
-  -- Insert text at the beginning of the current line
   vim.api.nvim_buf_set_text(
     0,          -- current buffer
     row - 1,    -- line (0-indexed)
@@ -192,7 +184,6 @@ vim.keymap.set({ "n", "i" }, "<F1>", function()
   )
 end)
 
--- Close current buffer
 vim.keymap.set({"n","i","t"}, "<F12>", function()
   local mode = vim.fn.mode()
   if mode == "i" then
@@ -203,11 +194,8 @@ vim.keymap.set({"n","i","t"}, "<F12>", function()
   vim.cmd("bd!")
 end, { noremap = true, silent = true, desc = "Close buffer" })
 
--- Terminal
 vim.keymap.set({ "n", "t" }, "<C-Up>", [[<C-\><C-n><C-w>k]], { desc = "Move Up", remap = false })
 vim.keymap.set({ "n", "t" }, "<C-Down>", [[<C-\><C-n><C-w>j]], { desc = "Move Down", remap = false })
-
--- RESIZE: Stretch the windows
 vim.keymap.set("n", "<C-S-Up>", ":resize +2<CR>", { desc = "Make Taller", remap = false })
 vim.keymap.set("n", "<C-S-Down>", ":resize -2<CR>", { desc = "Make Shorter", remap = false })
 

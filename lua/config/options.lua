@@ -1,5 +1,6 @@
 vim.g.minipairs_disable = true
 vim.o.autowriteall = true
+vim.g.autoformat = false
 
 local opt = vim.opt
 

@@ -34,38 +34,8 @@ vim.api.nvim_create_autocmd("VimEnter", {
   end,
 })
 
--- ================================
--- AUTOSAVE ON ALL BUFFER MUTATIONS
--- ================================
-
-local autosave_events = {
-  "InsertLeave",
-  "TextChanged",
-  "TextChangedI",
-  "TextChangedP",
-  "CursorHold",
-  "CursorHoldI",
-  "BufEnter",
-  "FocusGained",
-  "BufLeave",
-  "InsertEnter",
-}
-
-vim.api.nvim_create_autocmd(autosave_events, {
-  group = autocmd_group,
-  pattern = "*",
-  callback = function(args)
-    local bufnr = args.buf
-    if not is_normal_file(bufnr) then
-      return
-    end
-
-    if vim.api.nvim_buf_get_option(bufnr, "modified") then
-      vim.api.nvim_buf_call(bufnr, function()
-        vim.cmd("silent! write")
-      end)
-    end
-
-    buf_line_count[bufnr] = vim.api.nvim_buf_line_count(bufnr)
-  end,
+vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
+  pattern = { "*" },
+  command = "silent! wall",
+  nested = true,
 })

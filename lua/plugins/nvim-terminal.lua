@@ -16,18 +16,18 @@ return {
       local opts = { noremap = true, silent = true }
 
       -- Leader + small 't' for Horizontal (bottom of screen)
-      vim.keymap.set("n", "<leader>T", "<cmd>ToggleTerm direction=horizontal<cr>", {
+      vim.keymap.set("n", "<leader>t", "<cmd>ToggleTerm direction=horizontal<cr>", {
         desc = "Toggle Terminal Horizontal",
         noremap = opts.noremap,
         silent = opts.silent,
       })
 
-      -- Leader + capital 'T' for Floating (middle of screen)
-      vim.keymap.set("n", "<leader>t", "<cmd>ToggleTerm direction=float<cr>", {
-        desc = "Toggle Terminal Float",
-        noremap = opts.noremap,
-        silent = opts.silent,
-      })
+      -- -- Leader + capital 'T' for Floating (middle of screen)
+      -- vim.keymap.set("n", "<leader>t", "<cmd>ToggleTerm direction=float<cr>", {
+      --   desc = "Toggle Terminal Float",
+      --   noremap = opts.noremap,
+      --   silent = opts.silent,
+      -- })
 
       -- 3. Setup terminal mode escape rules
       function _G.set_terminal_keymaps()

@@ -193,7 +193,7 @@ vim.keymap.set({ "n", "i" }, "<F2>", function()
   local row, col = unpack(vim.api.nvim_win_get_cursor(0))
   local current_line = vim.api.nvim_get_current_line()
   local indent = current_line:match("^%s*") or ""
-  local line = indent .. string.format('puts "%s={%s}"', var, var)
+  local line = indent .. string.format('puts "%s=#{%s}"', var, var)
 
   if vim.api.nvim_get_mode().mode:match("^i") then
     vim.api.nvim_feedkeys(

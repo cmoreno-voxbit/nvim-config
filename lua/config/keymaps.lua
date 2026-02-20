@@ -56,12 +56,12 @@ vim.keymap.set(
   { noremap = true, silent = true, desc = "Previous buffer" }
 )
 
-vim.keymap.set(
-  "n",
-  "tt",
-  "<Cmd>enew | terminal<CR>i",
-  { noremap = true, silent = true, desc = "Open Terminal in a New Buffer" }
-)
+-- vim.keymap.set(
+--   "n",
+--   "tt",
+--   "<Cmd>enew | terminal<CR>i",
+--   { noremap = true, silent = true, desc = "Open Terminal in a New Buffer" }
+-- )
 
 local x_mode = "x"
 local map_prefix = "<leader>z"

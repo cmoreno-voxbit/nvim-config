@@ -257,4 +257,32 @@ vim.keymap.set({ "n", "t" }, "<C-Down>", [[<C-\><C-n><C-w>j]], { desc = "Move Do
 vim.keymap.set("n", "<C-S-Up>", ":resize +2<CR>", { desc = "Make Taller", remap = false })
 vim.keymap.set("n", "<C-S-Down>", ":resize -2<CR>", { desc = "Make Shorter", remap = false })
 
+vim.keymap.set({"n", "i"}, "<F4>", function()
+  local input = vim.fn.input("Calculator: ")
+  local solver, err = load("return " .. input)
+
+  if not solver then
+    vim.api.nvim_echo({{"Invalid Math!", "ErrorMsg"}}, true, {})
+    return
+  end
+
+  local ok, result = pcall(solver)
+  if ok and type(result) == "number" then
+    local result_value = " " .. tostring(result)
+    local mode = vim.api.nvim_get_mode().mode
+    if mode == "i" then
+      vim.api.nvim_feedkeys(result_value, "n", false)
+    else
+      vim.api.nvim_put({result_value}, "c", true, true)
+    end
+    return
+  end
+
+  vim.api.nvim_echo({{"Invalid Math!", "ErrorMsg"}}, true, {})
+end, { 
+    desc = "Calculate and insert math", 
+    silent = true 
+  })
+
+
 --END OF FILE

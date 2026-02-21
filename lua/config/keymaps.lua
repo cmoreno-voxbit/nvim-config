@@ -213,6 +213,50 @@ vim.keymap.set({ "n", "i" }, "<F2>", function()
   )
 end)
 
+vim.keymap.set({ "n", "i" }, "<F3>", function()
+  local var = vim.fn.input("(Ruby) Tag Content: ")
+  if var == "" then
+    return
+  end
+
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local current_line = vim.api.nvim_get_current_line()
+  local indent = current_line:match("^%s*") or ""
+  local line = indent .. string.format("<%%= %s %%>", var)
+
+  if vim.api.nvim_get_mode().mode:match("^i") then
+    vim.api.nvim_feedkeys(
+      vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
+      "n",
+      true
+    )
+  end
+
+  vim.api.nvim_buf_set_text(
+    0,
+    row - 1,
+    0,
+    row - 1,
+    0,
+    { line }
+  )
+end)
+
+vim.keymap.set("n", "<F4>", function()
+  vim.api.nvim_feedkeys(
+    vim.api.nvim_replace_termcodes('"= ', true, false, true),
+    "n",
+    false
+  )
+end, { noremap = true })
+
+vim.keymap.set("i", "<F4>", function()
+  vim.api.nvim_feedkeys(
+    vim.api.nvim_replace_termcodes('<C-r>=', true, false, true),
+    "n",
+    false
+  )
+end, { noremap = true })
 
 vim.keymap.set({"n","i","t"}, "<F12>", function()
   local mode = vim.fn.mode()

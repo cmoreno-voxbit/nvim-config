@@ -242,10 +242,6 @@ vim.keymap.set({ "n", "i" }, "<F3>", function()
   )
 end)
 
-vim.keymap.set("n", "<F4>", "a <C-r>=", { noremap = true })
-vim.keymap.set("i", "<F4>", " <C-r>=", { noremap = true })
-
-
 vim.keymap.set({"n","i","t"}, "<F12>", function()
   local mode = vim.fn.mode()
   if mode == "i" then

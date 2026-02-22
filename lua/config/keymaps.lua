@@ -43,6 +43,12 @@ vim.keymap.set("n", "<C-Right>", "<Nop>", { noremap = true, silent = true, desc 
 vim.keymap.set("n", "<C-Left>", "<Nop>", { noremap = true, silent = true, desc = "back word" })
 vim.keymap.set({ "n", "v" }, "<C-S-Right>", "$", { noremap = true, silent = true, desc = "End of line" })
 vim.keymap.set({ "n", "v" }, "<C-S-Left>", "_", { noremap = true, silent = true, desc = "Start of line" })
+vim.keymap.set({ "n", "v" }, "<C-l>", "$", { noremap = true, silent = true, desc = "End of line" })
+vim.keymap.set({ "n", "v" }, "<C-h>", "_", { noremap = true, silent = true, desc = "Start of line" })
+vim.keymap.set({ "n", "v" }, "<S-l>", "w", { noremap = true, silent = true, desc = "Next word" })
+vim.keymap.set({ "n", "v" }, "<S-h>", "b", { noremap = true, silent = true, desc = "Previous word" })
+vim.keymap.set({ "n", "v" }, "k", "kzz", { noremap = true, silent = true, desc = "UP + Center Screen" })
+vim.keymap.set({ "n", "v" }, "j", "jzz", { noremap = true, silent = true, desc = "DOWN + Center Screen" })
 vim.keymap.set(
   "n",
   "<leader><Right>",
@@ -56,17 +62,9 @@ vim.keymap.set(
   { noremap = true, silent = true, desc = "Previous buffer" }
 )
 
--- vim.keymap.set(
---   "n",
---   "tt",
---   "<Cmd>enew | terminal<CR>i",
---   { noremap = true, silent = true, desc = "Open Terminal in a New Buffer" }
--- )
-
 local x_mode = "x"
 local map_prefix = "<leader>z"
 local base_cmd = "gsa"
-
 local delimiters = {
   ["{"] = "}",
   ["("] = ")",
@@ -254,8 +252,8 @@ end, { noremap = true, silent = true, desc = "Close buffer" })
 
 vim.keymap.set({ "n", "t" }, "<C-Up>", [[<C-\><C-n><C-w>k]], { desc = "Move Up", remap = false })
 vim.keymap.set({ "n", "t" }, "<C-Down>", [[<C-\><C-n><C-w>j]], { desc = "Move Down", remap = false })
-vim.keymap.set("n", "<C-S-Up>", ":resize +2<CR>", { desc = "Make Taller", remap = false })
-vim.keymap.set("n", "<C-S-Down>", ":resize -2<CR>", { desc = "Make Shorter", remap = false })
+-- vim.keymap.set("n", "<C-S-Up>", ":resize +2<CR>", { desc = "Make Taller", remap = false })
+-- vim.keymap.set("n", "<C-S-Down>", ":resize -2<CR>", { desc = "Make Shorter", remap = false })
 
 vim.keymap.set({"n", "i"}, "<F4>", function()
   local input = vim.fn.input("Calculator: ")
@@ -283,6 +281,5 @@ end, {
     desc = "Calculate and insert math", 
     silent = true 
   })
-
 
 --END OF FILE

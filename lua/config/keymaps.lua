@@ -282,9 +282,12 @@ end, {
     silent = true 
   })
 
-vim.keymap.set({'n','i','v'}, '<Up>', '<Nop>')
-vim.keymap.set({'n','i','v'}, '<Down>', '<Nop>')
-vim.keymap.set({'n','i','v'}, '<Left>', '<Nop>')
-vim.keymap.set({'n','i','v'}, '<Right>', '<Nop>')
-vim.keymap.set({'n','i','v'}, '<S-j>', '<Nop>')
+-- vim.keymap.set({'n','i','v'}, '<Up>', '<Nop>')
+-- vim.keymap.set({'n','i','v'}, '<Down>', '<Nop>')
+-- vim.keymap.set({'n','i','v'}, '<Left>', '<Nop>')
+-- vim.keymap.set({'n','i','v'}, '<Right>', '<Nop>')
+vim.keymap.set({'n','i','v'}, 'H', '<Nop>')
+vim.keymap.set({'n','i','v'}, 'J', '<Nop>')
+vim.keymap.set({'n','i','v'}, 'K', '<Nop>')
+vim.keymap.set({'n','i','v'}, 'L', '<Nop>')
 --END OF FILE

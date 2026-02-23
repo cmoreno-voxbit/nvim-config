@@ -240,6 +240,11 @@ vim.keymap.set({ "n", "i" }, "<F3>", function()
   )
 end)
 
+vim.keymap.set({"n","i","t"}, "<F11>", function()
+    vim.cmd("terminal")
+    vim.cmd("startinsert")
+end, { noremap = true, silent = true, desc = "Open terminal buffer" })
+
 vim.keymap.set({"n","i","t"}, "<F12>", function()
   local mode = vim.fn.mode()
   if mode == "i" then

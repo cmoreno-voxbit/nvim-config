@@ -240,7 +240,7 @@ vim.keymap.set({ "n", "i" }, "<F3>", function()
   )
 end)
 
-vim.keymap.set({"n","i","t"}, "<F11>", function()
+vim.keymap.set({"n","i","t"}, "<F6>", function()
     vim.cmd("terminal")
     vim.cmd("startinsert")
 end, { noremap = true, silent = true, desc = "Open terminal buffer" })

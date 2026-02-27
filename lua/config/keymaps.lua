@@ -43,6 +43,8 @@ vim.keymap.set("n", "<C-Right>", "<Nop>", { noremap = true, silent = true, desc 
 vim.keymap.set("n", "<C-Left>", "<Nop>", { noremap = true, silent = true, desc = "back word" })
 vim.keymap.set({ "n", "v" }, "<C-S-Right>", "$", { noremap = true, silent = true, desc = "End of line" })
 vim.keymap.set({ "n", "v" }, "<C-S-Left>", "_", { noremap = true, silent = true, desc = "Start of line" })
+vim.keymap.set({ "n", "v" }, "<C-Right>", "e", { noremap = true, silent = true, desc = "End of line" })
+vim.keymap.set({ "n", "v" }, "<C-Left>", "b", { noremap = true, silent = true, desc = "Start of line" })
 vim.keymap.set({ "n", "v" }, "<C-l>", "$", { noremap = true, silent = true, desc = "End of line" })
 vim.keymap.set({ "n", "v" }, "<C-h>", "_", { noremap = true, silent = true, desc = "Start of line" })
 vim.keymap.set({ "n", "v" }, "<S-l>", "w", { noremap = true, silent = true, desc = "Next word" })

@@ -44,7 +44,7 @@ vim.keymap.set({ "n", "v" }, "<Tab><Left>", "_", { noremap = true, silent = true
 -- vim.keymap.set({ "n", "v" }, "<C-S-Right>", "$", { noremap = true, silent = true, desc = "End of line" })
 -- vim.keymap.set({ "n", "v" }, "<C-S-Left>", "_", { noremap = true, silent = true, desc = "Start of line" })
 vim.keymap.set({ "n", "v" }, "<C-S-Right>", "<Nop>", { noremap = true, silent = true, desc = "Nothing" })
-vim.keymap.set({ "n", "v" }, "<C-S-Left>", "<Nop>", { noremap = true, silent = true, desc = "Nothing" })
+vim.keymap.set({ "n", "v" }, "<C-S-Left>", "<Nop>", { noremap = true, silent = true, desc = "Start of line" })
 vim.keymap.set({ "n", "v" }, "<C-Right>", "e", { noremap = true, silent = true, desc = "End of line" })
 vim.keymap.set({ "n", "v" }, "<C-Left>", "b", { noremap = true, silent = true, desc = "Start of line" })
 vim.keymap.set({ "n", "v" }, "<C-l>", "$", { noremap = true, silent = true, desc = "End of line" })
@@ -99,12 +99,13 @@ vim.keymap.set("n", "<F3>", function()
   end
 end, { noremap = true, silent = true, desc = "Previous Diagnostic" })
 
-vim.keymap.set("n", "<C-i>", function()
+vim.keymap.set("n", "<leader>i", function()
   local win = 0
   local cursor = vim.api.nvim_win_get_cursor(win)
   vim.cmd("normal! ggVG=")
   vim.api.nvim_win_set_cursor(win, cursor)
   vim.cmd("normal! zz")
+  vim.notify("Indent!", vim.log.levels.INFO)
 end, { noremap = true, silent = true, desc = "Indent whole file and return" })
 
 local modes = { "n", "i", "v", "x", "s", "o", "t", "c" }

@@ -13,8 +13,7 @@ vim.keymap.set("n", "<S-Down>", "<Down>0_zz", { noremap = true, silent = true })
 vim.keymap.set("n", "<BS>", "_zz", { noremap = true, silent = true })
 vim.keymap.set("n", "o", "o<Esc>zz", { noremap = true, silent = true })
 vim.keymap.set("n", "O", "O<Esc>zz", { noremap = true, silent = true })
-vim.keymap.set("n", "G", "G}", { noremap = true, silent = true })
-vim.keymap.set("v", "G", "G}", { noremap = true, silent = true })
+vim.keymap.set({"n", "v"}, "G", "G}", { noremap = true, silent = true })
 vim.keymap.set("n", "gg", "gg{gg{", { noremap = true, silent = true })
 vim.keymap.set({ "n", "i", "v" }, "<Home>", "_", { noremap = true, silent = true })
 vim.keymap.set({"i","n","v","c"}, "<Insert>", "<Nop>", { noremap = true, silent = true })
@@ -96,6 +95,11 @@ vim.keymap.set("n", "<F3>", function()
     trouble.prev({ skip_groups = true, jump = true })
   end
 end, { noremap = true, silent = true, desc = "Previous Diagnostic" })
+
+vim.keymap.set({"n","v"}, "<Tab>t", function()
+  vim.cmd("0")
+  vim.cmd("normal! _")
+end, { noremap = true, silent = true, desc = "Go to the top of the file" })
 
 vim.keymap.set("n", "<Tab>i", function()
   local win = 0

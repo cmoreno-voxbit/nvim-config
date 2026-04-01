@@ -83,18 +83,6 @@ for trigger, target in pairs(delimiters) do
   })
 end
 
-local trouble = require("trouble")
-vim.keymap.set("n", "<F2>", function()
-  if trouble.is_open() then
-    trouble.next({ skip_groups = true, jump = true })
-  end
-end, { noremap = true, silent = true, desc = "Next Diagnostic" })
-
-vim.keymap.set("n", "<F3>", function()
-  if trouble.is_open() then
-    trouble.prev({ skip_groups = true, jump = true })
-  end
-end, { noremap = true, silent = true, desc = "Previous Diagnostic" })
 
 vim.keymap.set({"n","v"}, "<Tab>t", function()
   vim.cmd("0")

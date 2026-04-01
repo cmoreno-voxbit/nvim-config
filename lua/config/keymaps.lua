@@ -37,9 +37,6 @@ vim.keymap.set("n", "$", "$a <Esc>", { noremap = true, silent = true })
 vim.keymap.set("n", "<S-a>", "a", { noremap = true, silent = true })
 vim.keymap.set("n", "gg", "gg_", { noremap = true, silent = true })
 vim.keymap.set("n", "G", "G_", { noremap = true, silent = true })
-vim.keymap.set({ "n", "v" }, "<Tab>", "<Nop>", { noremap = true, silent = true, desc = "Nothing" })
-vim.keymap.set({ "n", "v" }, "<Tab><Right>", "$", { noremap = true, silent = true, desc = "End of line" })
-vim.keymap.set({ "n", "v" }, "<Tab><Left>", "_", { noremap = true, silent = true, desc = "Start of line" })
 vim.keymap.set({ "n", "v" }, "<C-S-Right>", "<Nop>", { noremap = true, silent = true, desc = "Nothing" })
 vim.keymap.set({ "n", "v" }, "<C-S-Left>", "<Nop>", { noremap = true, silent = true, desc = "Start of line" })
 vim.keymap.set({ "n", "v" }, "<C-Right>", "e", { noremap = true, silent = true, desc = "End of line" })
@@ -84,10 +81,14 @@ for trigger, target in pairs(delimiters) do
 end
 
 
-vim.keymap.set({"n","v"}, "<Tab>t", function()
+vim.keymap.set({ "n", "v" }, "<Tab>", "<Nop>", { noremap = true, silent = true, desc = "Nothing" })
+vim.keymap.set({ "n", "v" }, "<Tab><Right>", "$", { noremap = true, silent = true, desc = "End of line" })
+vim.keymap.set({ "n", "v" }, "<Tab><Left>", "_", { noremap = true, silent = true, desc = "Start of line" })
+vim.keymap.set({ "n", "v" }, "<Tab><Down>", "G", { noremap = true, silent = true, desc = "End of file" })
+vim.keymap.set({"n","v"}, "<Tab><Up>", function()
   vim.cmd("0")
   vim.cmd("normal! _")
-end, { noremap = true, silent = true, desc = "Go to the top of the file" })
+end, { noremap = true, silent = true, desc = "Top of file" })
 
 vim.keymap.set("n", "<Tab>i", function()
   local win = 0
@@ -281,10 +282,6 @@ end, {
     silent = true 
   })
 
--- vim.keymap.set({'n','i','v'}, '<Up>', '<Nop>')
--- vim.keymap.set({'n','i','v'}, '<Down>', '<Nop>')
--- vim.keymap.set({'n','i','v'}, '<Left>', '<Nop>')
--- vim.keymap.set({'n','i','v'}, '<Right>', '<Nop>')
 vim.keymap.set({'n','v'}, 'H', '<Nop>')
 vim.keymap.set({'n','v'}, 'J', '<Nop>')
 vim.keymap.set({'n','v'}, 'K', '<Nop>')

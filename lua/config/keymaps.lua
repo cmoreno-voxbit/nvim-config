@@ -84,7 +84,7 @@ end
 vim.keymap.set({ "n", "v" }, "<Tab>", "<Nop>", { noremap = true, silent = true, desc = "Nothing" })
 vim.keymap.set({ "n", "v" }, "<Tab><Right>", "$", { noremap = true, silent = true, desc = "End of line" })
 vim.keymap.set({ "n", "v" }, "<Tab><Left>", "_", { noremap = true, silent = true, desc = "Start of line" })
-vim.keymap.set({ "n", "v" }, "<Tab><Down>", "G", { noremap = true, silent = true, desc = "End of file" })
+-- vim.keymap.set({ "n", "v" }, "<Tab><Down>", "G", { noremap = true, silent = true, desc = "End of file" })
 vim.keymap.set({"n","v"}, "<Tab><Up>", function()
   vim.cmd("0")
   vim.cmd("normal! _")

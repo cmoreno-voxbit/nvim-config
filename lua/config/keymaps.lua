@@ -1,4 +1,4 @@
-vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files, { desc = "Find Files" })
+vim.keymap.set("n", "<leader><leader>", require("telescope.builtin").find_files, { desc = "Find Files" })
 vim.keymap.set("n", "<leader>fg", require("telescope.builtin").live_grep, { desc = "Find Grep" })
 vim.keymap.set("n", "D", '"_ld$', { desc = "Delete until EOL (exclude cursor)" })
 vim.keymap.set({ "n", "x" }, "d", '"_d', { noremap = true, silent = true, desc = "Delete without yanking" })
@@ -31,6 +31,8 @@ vim.keymap.set("n", "Y", "yiw", { noremap = true, silent = true })
 vim.keymap.set("n", "C", '"_ciw', { noremap = true, silent = true })
 vim.keymap.set({ "n", "v" }, "<PageDown>", "<C-d>zz0", { desc = "Half page down, center" })
 vim.keymap.set({ "n", "v" }, "<PageUp>", "<C-u>zz0", { desc = "Half page up, center" })
+vim.keymap.set({ "n", "v" }, "]", "<C-d>zz0", { desc = "Half page down, center" })
+vim.keymap.set({ "n", "v" }, "[", "<C-u>zz0", { desc = "Half page up, center" })
 vim.keymap.set("n", "<C-S-Up>", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-S-Down>", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set("n", "$", "$a <Esc>", { noremap = true, silent = true })
@@ -282,8 +284,15 @@ end, {
     silent = true 
   })
 
+-- DISABLED KEYMAPS
 vim.keymap.set({'n','v'}, 'H', '<Nop>')
 vim.keymap.set({'n','v'}, 'J', '<Nop>')
 vim.keymap.set({'n','v'}, 'K', '<Nop>')
 vim.keymap.set({'n','v'}, 'L', '<Nop>')
+vim.keymap.set({"i","n","v","c"}, "<leader>g", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set({"i","n","v","c"}, "<leader>f", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set({"i","n","v","c"}, "<leader>d", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set({"i","n","v","c"}, "<leader>b", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set({"i","n","v","c"}, "<leader>|", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set({"i","n","v","c"}, "<leader>`", "<Nop>", { noremap = true, silent = true })
 --END OF FILE

@@ -206,7 +206,6 @@ for _, mode in ipairs(modes) do
   vim.keymap.set(mode, "<C-W><Down>", "<NOP>", { noremap = true, silent = true })
 end
 vim.keymap.set({"i","n","v","c"}, "<Insert>", "<Nop>", { noremap = true, silent = true })
-vim.keymap.set({ "n", "i", "v", "x", "o", "c", "t" }, "<F1>", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set({ "n", "i", "v", "x", "o", "c", "t" }, "<C-/>", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set("n", "Q", "<Nop>", { noremap = true })
 vim.keymap.set("n", "q", "<Nop>", { noremap = true })

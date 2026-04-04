@@ -62,6 +62,12 @@ for trigger, target in pairs(delimiters) do
   })
 end
 
+
+vim.keymap.set("n", "<Tab>s", function()
+  vim.cmd("normal viik")
+end, { silent = true, desc = "Select Inside Indentation" })
+
+
 vim.keymap.set({ "n", "v" }, "<Tab><Right>", "$", { noremap = true, silent = true, desc = "End of line" })
 vim.keymap.set({ "n", "v" }, "<Tab><Left>", "_", { noremap = true, silent = true, desc = "Start of line" })
 -- vim.keymap.set({ "n", "v" }, "<Tab><Down>", "G", { noremap = true, silent = true, desc = "Bottom of line" })

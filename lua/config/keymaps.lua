@@ -63,7 +63,7 @@ for trigger, target in pairs(delimiters) do
 end
 
 
-vim.keymap.set("n", "<Tab>s", function()
+vim.keymap.set("n", "<Tab>i", function()
   vim.cmd("normal viik")
 end, { silent = true, desc = "Select Inside Indentation" })
 
@@ -76,13 +76,13 @@ vim.keymap.set({"n","v"}, "<Tab><Up>", function()
   vim.cmd("normal! _")
 end, { noremap = true, silent = true, desc = "Top of file" })
 
-vim.keymap.set("n", "<Tab>i", function()
+vim.keymap.set("n", "<Tab>f", function()
   local win = 0
   local cursor = vim.api.nvim_win_get_cursor(win)
   vim.cmd("normal! ggVG=")
   vim.api.nvim_win_set_cursor(win, cursor)
   vim.cmd("normal! zz")
-end, { noremap = true, silent = true, desc = "Indent file" })
+end, { noremap = true, silent = true, desc = "Format file" })
 
 
 vim.keymap.set("n", "<F5>", function()

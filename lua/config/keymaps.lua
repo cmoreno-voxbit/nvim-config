@@ -64,7 +64,7 @@ end
 
 
 vim.keymap.set("n", "<Tab>si", function()
-  vim.cmd("normal _Vii")
+  vim.cmd("normal _Viik")
 end, { silent = true, desc = "Select Inside Indentation" })
 
 

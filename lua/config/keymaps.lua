@@ -65,7 +65,7 @@ end
 
 vim.keymap.set({ "n", "v" }, "<Tab><Right>", "$", { noremap = true, silent = true, desc = "End of line" })
 vim.keymap.set({ "n", "v" }, "<Tab><Left>", "_", { noremap = true, silent = true, desc = "Start of line" })
-vim.keymap.set({ "n", "v" }, "<Tab><Down>", "G", { noremap = true, silent = true, desc = "Bottom of line" })
+-- vim.keymap.set({ "n", "v" }, "<Tab><Down>", "G", { noremap = true, silent = true, desc = "Bottom of line" })
 vim.keymap.set({"n","v"}, "<Tab><Up>", function()
   vim.cmd("0")
   vim.cmd("normal! _")
@@ -172,7 +172,7 @@ end, { noremap = true, silent = true, desc = "Close buffer" })
 vim.keymap.set({ "n", "t" }, "<C-Up>", [[<C-\><C-n><C-w>k]], { desc = "Move Up", remap = false })
 vim.keymap.set({ "n", "t" }, "<C-Down>", [[<C-\><C-n><C-w>j]], { desc = "Move Down", remap = false })
 
-vim.keymap.set({"n", "i"}, "<F4>", function()
+vim.keymap.set({"n", "i"}, "<F2>", function()
   local input = vim.fn.input("Calculator: ")
   local solver, err = load("return " .. input)
 

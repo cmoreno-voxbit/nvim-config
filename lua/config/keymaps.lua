@@ -65,12 +65,12 @@ end
 
 vim.keymap.set("n", "<Tab>si", function()
   vim.cmd("normal Vio")
-end, { silent = true, desc = "Select inside block" })
+end, { silent = true, desc = "Inside" })
 
 
 vim.keymap.set("n", "<Tab>sa", function()
   vim.cmd("normal Vao")
-end, { silent = true, desc = "Select around block" })
+end, { silent = true, desc = "Around" })
 
 
 vim.keymap.set({ "n", "v" }, "<Tab><Right>", "$", { noremap = true, silent = true, desc = "End of line" })

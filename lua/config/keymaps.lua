@@ -63,14 +63,14 @@ for trigger, target in pairs(delimiters) do
 end
 
 
--- vim.keymap.set("n", "<Tab>si", function()
---   vim.cmd("normal Vio")
--- end, { silent = true, desc = "Inside" })
---
---
--- vim.keymap.set("n", "<Tab>sa", function()
---   vim.cmd("normal Vao")
--- end, { silent = true, desc = "Around" })
+vim.keymap.set("n", "<Tab>si", function()
+  vim.cmd("normal _Vii")
+end, { silent = true, desc = "Select Inside Indentation" })
+
+
+vim.keymap.set("n", "<Tab>sa", function()
+  vim.cmd("normal _Vai")
+end, { silent = true, desc = "Select Around Indentation" })
 
 
 vim.keymap.set({ "n", "v" }, "<Tab><Right>", "$", { noremap = true, silent = true, desc = "End of line" })

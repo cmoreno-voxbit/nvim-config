@@ -21,10 +21,10 @@ vim.keymap.set("n", "P", "ciw<C-r>0<Esc>yiw", { noremap = true, silent = true })
 vim.keymap.set("n", "yy", "0y$", { noremap = true, silent = true })
 vim.keymap.set("n", "Y", "yiw", { noremap = true, silent = true })
 vim.keymap.set("n", "C", '"_ciw', { noremap = true, silent = true })
-vim.keymap.set({ "n", "v" }, "<PageDown>", "<C-d>zz0", { desc = "Half page down, center" })
-vim.keymap.set({ "n", "v" }, "<PageUp>", "<C-u>zz0", { desc = "Half page up, center" })
-vim.keymap.set({ "n", "v" }, "]", "<C-d>zz0", { desc = "Half page down, center" })
-vim.keymap.set({ "n", "v" }, "[", "<C-u>zz0", { desc = "Half page up, center" })
+vim.keymap.set({ "n", "v" }, "<PageDown>", "<C-d>zz0", { desc = "Go half page down" })
+vim.keymap.set({ "n", "v" }, "<PageUp>", "<C-u>zz0", { desc = "Go half page up"})
+vim.keymap.set({ "n", "v" }, "]]", "<C-d>zz0", { desc = "Go half page down" })
+vim.keymap.set({ "n", "v" }, "[[", "<C-u>zz0", { desc = "Go half page up" })
 vim.keymap.set("n", "$", "$a <Esc>", { noremap = true, silent = true })
 vim.keymap.set("n", "<S-a>", "a", { noremap = true, silent = true })
 vim.keymap.set("n", "gg", "gg_", { noremap = true, silent = true })
@@ -32,7 +32,6 @@ vim.keymap.set("n", "G", "G_", { noremap = true, silent = true })
 vim.keymap.set({ "n", "v" }, "<C-S-Right>", "<Nop>", { noremap = true, silent = true, desc = "Nothing" })
 vim.keymap.set({ "n", "v" }, "<C-S-Left>", "<Nop>", { noremap = true, silent = true, desc = "Start of line" })
 vim.keymap.set({ "n", "v" }, "<C-Right>", "e", { noremap = true, silent = true, desc = "End of line" })
-vim.keymap.set({ "n", "v" }, "<C-Left>", "b", { noremap = true, silent = true, desc = "Start of line" })
 vim.keymap.set({ "n", "v" }, "<C-l>", "$", { noremap = true, silent = true, desc = "End of line" })
 vim.keymap.set({ "n", "v" }, "<C-h>", "_", { noremap = true, silent = true, desc = "Start of line" })
 vim.keymap.set({ "n", "v" }, "<S-l>", "w", { noremap = true, silent = true, desc = "Next word" })
@@ -41,6 +40,7 @@ vim.keymap.set({ "n", "v" }, "k", "kzz", { noremap = true, silent = true, desc =
 vim.keymap.set({ "n", "v" }, "j", "jzz", { noremap = true, silent = true, desc = "DOWN + Center Screen" })
 vim.keymap.set("n","<leader><Right>","<Cmd>silent! bnext<CR>",{ noremap = true, silent = true, desc = "Next buffer" })
 vim.keymap.set("n","<leader><Left>","<Cmd>silent! bprevious<CR>",{ noremap = true, silent = true, desc = "Previous buffer" })
+
 
 local x_mode = "x"
 local map_prefix = "<leader>z"
@@ -61,7 +61,6 @@ for trigger, target in pairs(delimiters) do
     desc = "with " .. target,
   })
 end
-
 
 vim.keymap.set({ "n", "v" }, "<Tab><Right>", "$", { noremap = true, silent = true, desc = "End of line" })
 vim.keymap.set({ "n", "v" }, "<Tab><Left>", "_", { noremap = true, silent = true, desc = "Start of line" })

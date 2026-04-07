@@ -1,7 +1,9 @@
 -- VERSION 2.0
 local map = vim.keymap.set
 -- 1. SEARCHING
-map("n", "<leader><leader>", require("telescope.builtin").find_files, { desc = "Find Files" })
+map("n", "<leader><leader>", function()
+  require("telescope.builtin").find_files({ cwd = vim.fn.getcwd() })
+end, { desc = "Find Files" })
 map("n", "<leader>fg", require("telescope.builtin").live_grep, { desc = "Find Grep" })
 
 -- 2. DELETING & YANKING

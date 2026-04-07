@@ -15,10 +15,12 @@ vim.keymap.set("n", "o", "o<Esc>zz", { noremap = true, silent = true })
 vim.keymap.set("n", "O", "O<Esc>zz", { noremap = true, silent = true })
 vim.keymap.set({"n", "v"}, "G", "G}", { noremap = true, silent = true })
 vim.keymap.set("n", "gg", "gg{gg{", { noremap = true, silent = true })
-vim.keymap.set({ "n", "i", "v" }, "<Home>", "_", { noremap = true, silent = true })
-vim.keymap.set("n", "p", "<S-p>", { noremap = true, silent = true })
-vim.keymap.set("n", "P", "ciw<C-r>0<Esc>yiw", { noremap = true, silent = true })
-vim.keymap.set("n", "yy", "0y$", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "<Home>", "_", { noremap = true, silent = true })
+
+vim.keymap.set("n", "p", '"_dP', { noremap = true, silent = true })
+vim.keymap.set("n", "P", "viw\"_dP", { noremap = true, silent = true })
+
+vim.keymap.set("n", "yy", "_y_", { noremap = true, silent = true })
 vim.keymap.set("n", "Y", "yiw", { noremap = true, silent = true })
 vim.keymap.set("n", "C", '"_ciw', { noremap = true, silent = true })
 vim.keymap.set({ "n", "v" }, "<PageDown>", "<C-d>zz0", { desc = "Go half page down" })
@@ -64,12 +66,23 @@ end
 
 
 vim.keymap.set("n", "<Tab>si", function()
-  vim.cmd("normal _Viik")
+  vim.cmd("normal _Vii_")
 end, { silent = true, desc = "Select Inside Indentation" })
 
+vim.keymap.set("n", "<Tab>sf", function()
+  vim.cmd("normal _Vaf_")
+end, { silent = true, desc = "Select Around Function" })
+
+vim.keymap.set("n", "<Tab>sc", function()
+  vim.cmd("normal _Vac_")
+end, { silent = true, desc = "Select Around Class" })
+
+vim.keymap.set("n", "<Tab>sp", function()
+  vim.cmd("normal _Vip_")
+end, { silent = true, desc = "Select Inside Paragraph" })
 
 vim.keymap.set("n", "<Tab>sa", function()
-  vim.cmd("normal _Vai")
+  vim.cmd("normal _Vai_")
 end, { silent = true, desc = "Select Around Indentation" })
 
 
@@ -229,11 +242,11 @@ vim.keymap.set({'n','v'}, 'H', '<Nop>')
 vim.keymap.set({'n','v'}, 'J', '<Nop>')
 vim.keymap.set({'n','v'}, 'K', '<Nop>')
 vim.keymap.set({'n','v'}, 'L', '<Nop>')
-vim.keymap.set({"i","n","v","c"}, "<leader>g", "<Nop>", { noremap = true, silent = true })
-vim.keymap.set({"i","n","v","c"}, "<leader>f", "<Nop>", { noremap = true, silent = true })
-vim.keymap.set({"i","n","v","c"}, "<leader>d", "<Nop>", { noremap = true, silent = true })
-vim.keymap.set({"i","n","v","c"}, "<leader>b", "<Nop>", { noremap = true, silent = true })
-vim.keymap.set({"i","n","v","c"}, "<leader>|", "<Nop>", { noremap = true, silent = true })
-vim.keymap.set({"i","n","v","c"}, "<leader>`", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set({"n","v","c"}, "<leader>g", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set({"n","v","c"}, "<leader>f", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set({"n","v","c"}, "<leader>d", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set({"n","v","c"}, "<leader>b", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set({"n","v","c"}, "<leader>|", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set({"n","v","c"}, "<leader>`", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>R", "<Nop>", { noremap = true, silent = true })
 --END OF FILE

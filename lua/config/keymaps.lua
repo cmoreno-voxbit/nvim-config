@@ -1,100 +1,76 @@
-vim.keymap.set("n", "<leader><leader>", require("telescope.builtin").find_files, { desc = "Find Files" })
-vim.keymap.set("n", "<leader>fg", require("telescope.builtin").live_grep, { desc = "Find Grep" })
-vim.keymap.set("n", "D", '"_ld$', { desc = "Delete until EOL (exclude cursor)" })
-vim.keymap.set({ "n", "x" }, "d", '"_d', { noremap = true, silent = true, desc = "Delete without yanking" })
-vim.keymap.set("n", "dd", '"_dd', { noremap = true, silent = true, desc = "Delete line without yanking" })
-vim.keymap.set("n", "$", "$h", { noremap = true, silent = true })
-vim.keymap.set("n", "<C-d>", "<Cmd>normal! <C-d>zz0<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<C-u>", "<Cmd>normal! <C-u>zz0<CR>", { noremap = true, silent = true })
-vim.keymap.set({ "n", "v", "x" }, "<Up>", "<Up>zz", { noremap = true, silent = true })
-vim.keymap.set({ "n", "v", "x" }, "<Down>", "<Down>zz", { noremap = true, silent = true })
-vim.keymap.set("n", "<S-Up>", "<Up>0_zz", { noremap = true, silent = true })
-vim.keymap.set("n", "<S-Down>", "<Down>0_zz", { noremap = true, silent = true })
-vim.keymap.set("n", "<BS>", "_zz", { noremap = true, silent = true })
-vim.keymap.set("n", "o", "o<Esc>zz", { noremap = true, silent = true })
-vim.keymap.set("n", "O", "O<Esc>zz", { noremap = true, silent = true })
-vim.keymap.set({"n", "v"}, "G", "G}", { noremap = true, silent = true })
-vim.keymap.set("n", "gg", "gg{gg{", { noremap = true, silent = true })
-vim.keymap.set({ "n", "v" }, "<Home>", "_", { noremap = true, silent = true })
+-- VERSION 2.0
+local map = vim.keymap.set
+-- 1. SEARCHING
+map("n", "<leader><leader>", require("telescope.builtin").find_files, { desc = "Find Files" })
+map("n", "<leader>fg", require("telescope.builtin").live_grep, { desc = "Find Grep" })
 
-vim.keymap.set("n", "p", '"_dP', { noremap = true, silent = true })
-vim.keymap.set("n", "P", "viw\"_dP", { noremap = true, silent = true })
+-- 2. DELETING & YANKING
+map("n", "D", '"_ld$', { desc = "Delete until EOL (exclude cursor)" })
+map({ "n", "x" }, "d", '"_d', { noremap = true, silent = true, desc = "Delete without yanking" })
+map("n", "dd", '"_dd', { noremap = true, silent = true, desc = "Delete line without yanking" })
+map("n", "C", '"_ciw', { noremap = true, silent = true })
+map("n", "p", '"_dP', { noremap = true, silent = true })
+map("n", "P", 'viw"_dP', { noremap = true, silent = true })
+map("n", "yy", "_y_", { noremap = true, silent = true })
+map("n", "Y", "yiw", { noremap = true, silent = true })
 
-vim.keymap.set("n", "yy", "_y_", { noremap = true, silent = true })
-vim.keymap.set("n", "Y", "yiw", { noremap = true, silent = true })
-vim.keymap.set("n", "C", '"_ciw', { noremap = true, silent = true })
-vim.keymap.set({ "n", "v" }, "<PageDown>", "<C-d>zz0", { desc = "Go half page down" })
-vim.keymap.set({ "n", "v" }, "<PageUp>", "<C-u>zz0", { desc = "Go half page up"})
-vim.keymap.set({ "n", "v" }, "<Tab>]", "<C-d>zz0", { noremap = true, silent=true, desc = "Go half page down" })
-vim.keymap.set({ "n", "v" }, "<Tab>[", "<C-u>zz0", { noremap = true, silent=true, desc = "Go half page up" })
-vim.keymap.set("n", "$", "$a <Esc>", { noremap = true, silent = true })
-vim.keymap.set("n", "<S-a>", "a", { noremap = true, silent = true })
-vim.keymap.set("n", "gg", "gg_", { noremap = true, silent = true })
-vim.keymap.set("n", "G", "G_", { noremap = true, silent = true })
-vim.keymap.set({ "n", "v" }, "<C-S-Right>", "<Nop>", { noremap = true, silent = true, desc = "Nothing" })
-vim.keymap.set({ "n", "v" }, "<C-S-Left>", "<Nop>", { noremap = true, silent = true, desc = "Start of line" })
-vim.keymap.set({ "n", "v" }, "<C-Right>", "e", { noremap = true, silent = true, desc = "End of line" })
-vim.keymap.set({ "n", "v" }, "<C-l>", "$", { noremap = true, silent = true, desc = "End of line" })
-vim.keymap.set({ "n", "v" }, "<C-h>", "_", { noremap = true, silent = true, desc = "Start of line" })
-vim.keymap.set({ "n", "v" }, "<S-l>", "w", { noremap = true, silent = true, desc = "Next word" })
-vim.keymap.set({ "n", "v" }, "<S-h>", "b", { noremap = true, silent = true, desc = "Previous word" })
-vim.keymap.set({ "n", "v" }, "k", "kzz", { noremap = true, silent = true, desc = "UP + Center Screen" })
-vim.keymap.set({ "n", "v" }, "j", "jzz", { noremap = true, silent = true, desc = "DOWN + Center Screen" })
-vim.keymap.set("n","<leader><Right>","<Cmd>silent! bnext<CR>",{ noremap = true, silent = true, desc = "Next buffer" })
-vim.keymap.set("n","<leader><Left>","<Cmd>silent! bprevious<CR>",{ noremap = true, silent = true, desc = "Previous buffer" })
+-- 3. MOVING AROUND
+map("n", "gg", "gg_", { noremap = true, silent = true })
+map("n", "G", "G_", { noremap = true, silent = true })
+map("n", "$", "$h", { noremap = true, silent = true })
+map({ "n", "v" }, "<Home>", "_", { noremap = true, silent = true })
 
+map("n", "<C-d>", "<Cmd>normal! <C-d>zz0<CR>", { noremap = true, silent = true })
+map("n", "<C-u>", "<Cmd>normal! <C-u>zz0<CR>", { noremap = true, silent = true })
+map({ "n", "v", "x" }, "<Up>", "<Up>zz", { noremap = true, silent = true })
+map({ "n", "v", "x" }, "<Down>", "<Down>zz", { noremap = true, silent = true })
+map("n", "<S-Up>", "<Up>0_zz", { noremap = true, silent = true })
+map("n", "<S-Down>", "<Down>0_zz", { noremap = true, silent = true })
+map("n", "<BS>", "_zz", { noremap = true, silent = true })
+map({ "n", "v" }, "k", "kzz", { noremap = true, silent = true })
+map({ "n", "v" }, "j", "jzz", { noremap = true, silent = true })
 
-local x_mode = "x"
-local map_prefix = "<leader>z"
-local base_cmd = "gsa"
-local delimiters = {
-  ["{"] = "}",
-  ["("] = ")",
-  ["["] = "]",
-  ["q"] = '"',
-  ["s"] = "'",
-  ["b"] = "`",
-}
+-- PAGE JUMPS
+map({ "n", "v" }, "<PageDown>", "<C-d>zz0", { desc = "Go half page down" })
+map({ "n", "v" }, "<PageUp>", "<C-u>zz0", { desc = "Go half page up" })
+map({ "n", "v" }, "<Tab>]", "<C-d>zz0", { noremap = true, silent=true })
+map({ "n", "v" }, "<Tab>[", "<C-u>zz0", { noremap = true, silent=true })
 
+-- WORD MOVES
+map({ "n", "v" }, "<C-Right>", "e", { noremap = true, silent = true })
+map({ "n", "v" }, "<C-Left>", "b", { noremap = true, silent = true })
+map({ "n", "v" }, "<S-l>", "w", { noremap = true, silent = true })
+map({ "n", "v" }, "<S-h>", "b", { noremap = true, silent = true })
+map({ "n", "v" }, "<C-l>", "$", { noremap = true, silent = true })
+map({ "n", "v" }, "<C-h>", "_", { noremap = true, silent = true })
+
+-- BUFFERS
+map("n","<leader><Right>","<Cmd>silent! bnext<CR>",{ noremap = true, silent = true })
+map("n","<leader><Left>","<Cmd>silent! bprevious<CR>",{ noremap = true, silent = true })
+
+-- 4. INSERTING & EDITING
+map("n", "o", "o<Esc>zz", { noremap = true, silent = true })
+map("n", "O", "O<Esc>zz", { noremap = true, silent = true })
+map("n", "<S-a>", "a", { noremap = true, silent = true })
+
+-- 5. `'[{("SURROUND")}]'` WITH SYMBOLS
+local delimiters = { ["{"] = "}", ["("] = ")", ["["] = "]", ["q"] = '"', ["s"] = "'", ["b"] = "`" }
 for trigger, target in pairs(delimiters) do
-  vim.keymap.set(x_mode, map_prefix .. trigger, base_cmd .. target .. "h", {
-    remap = true,
-    silent = true,
-    desc = "with " .. target,
-  })
+  map("x", "<leader>z" .. trigger, "gsa" .. target .. "h", { remap = true, silent = true, desc = "with " .. target })
 end
 
+-- 6. TAB RULES
+map("n", "<Tab>si", "<Cmd>normal! _Vii_<CR>", { silent = true, desc = "Select Inside Indentation" })
+map("n", "<Tab>sf", "<Cmd>normal! _Vaf_<CR>", { silent = true, desc = "Select Around Function" })
+map("n", "<Tab>sc", "<Cmd>normal! _Vac_<CR>", { silent = true, desc = "Select Around Class" })
+map("n", "<Tab>sp", "<Cmd>normal! _Vip_<CR>", { silent = true, desc = "Select Inside Paragraph" })
+map("n", "<Tab>sa", "<Cmd>normal! _Vai_<CR>", { silent = true, desc = "Select Around Indentation" })
 
-vim.keymap.set("n", "<Tab>si", function()
-  vim.cmd("normal _Vii_")
-end, { silent = true, desc = "Select Inside Indentation" })
+map({ "n", "v" }, "<Tab><Right>", "$", { noremap = true, silent = true })
+map({ "n", "v" }, "<Tab><Left>", "_", { noremap = true, silent = true })
+map({"n","v"}, "<Tab><Up>", "<Cmd>0<CR><Cmd>normal! _<CR>", { noremap = true, silent = true })
 
-vim.keymap.set("n", "<Tab>sf", function()
-  vim.cmd("normal _Vaf_")
-end, { silent = true, desc = "Select Around Function" })
-
-vim.keymap.set("n", "<Tab>sc", function()
-  vim.cmd("normal _Vac_")
-end, { silent = true, desc = "Select Around Class" })
-
-vim.keymap.set("n", "<Tab>sp", function()
-  vim.cmd("normal _Vip_")
-end, { silent = true, desc = "Select Inside Paragraph" })
-
-vim.keymap.set("n", "<Tab>sa", function()
-  vim.cmd("normal _Vai_")
-end, { silent = true, desc = "Select Around Indentation" })
-
-
-vim.keymap.set({ "n", "v" }, "<Tab><Right>", "$", { noremap = true, silent = true, desc = "End of line" })
-vim.keymap.set({ "n", "v" }, "<Tab><Left>", "_", { noremap = true, silent = true, desc = "Start of line" })
--- vim.keymap.set({ "n", "v" }, "<Tab><Down>", "G", { noremap = true, silent = true, desc = "Bottom of line" })
-vim.keymap.set({"n","v"}, "<Tab><Up>", function()
-  vim.cmd("0")
-  vim.cmd("normal! _")
-end, { noremap = true, silent = true, desc = "Top of file" })
-
-vim.keymap.set("n", "<Tab>f", function()
+map("n", "<Tab>f", function()
   local win = 0
   local cursor = vim.api.nvim_win_get_cursor(win)
   vim.cmd("normal! ggVG=")
@@ -102,27 +78,28 @@ vim.keymap.set("n", "<Tab>f", function()
   vim.cmd("normal! zz")
 end, { noremap = true, silent = true, desc = "Format file" })
 
+-- 7. BIG TOOLS
+map("n", "<leader>m", "<Cmd>Mason<CR>", { noremap = true, silent = true })
+map("n", "<leader>M", "<Cmd>LazyExtras<CR>", { noremap = true, silent = true })
 
-vim.keymap.set("n", "<F5>", function()
+map("n", "<F5>", function()
   package.loaded["config.keymaps"] = nil
   require("config.keymaps")
   vim.cmd("e!")
   vim.notify("Reload!", vim.log.levels.INFO)
 end, { desc = "Reload!" })
 
-vim.keymap.set("n", "<leader>r", function()
+map("n", "<leader>r", function()
   local win = 0
   local cursor = vim.api.nvim_win_get_cursor(win)
   local word = vim.fn.expand("<cword>")
   local new_word = vim.fn.input("Replace '" .. word .. "' with: ")
-  if new_word ~= "" then
-    vim.cmd(string.format("%%s/%s/%s/g", word, new_word))
-  end
+  if new_word ~= "" then vim.cmd(string.format("%%s/%s/%s/g", word, new_word)) end
   vim.api.nvim_win_set_cursor(win, cursor)
   vim.cmd("normal! zz")
-end, { desc = "Replace word (with prompt)" })
+end, { desc = "Replace word" })
 
-vim.keymap.set("v", "<leader>r", function()
+map("v", "<leader>r", function()
   local win = 0
   local cursor = vim.api.nvim_win_get_cursor(win)
   vim.cmd('normal! "hy')
@@ -134,55 +111,51 @@ vim.keymap.set("v", "<leader>r", function()
   vim.cmd("normal! zz")
 end, { desc = "Replace Visually" })
 
-vim.keymap.set("n", "<leader>m", "<Cmd>Mason<CR>", { noremap = true, silent = true, desc = "Mason" })
-vim.keymap.set("n", "<leader>M", "<Cmd>LazyExtras<CR>", { noremap = true, silent = true, desc = "Lazy Extras" })
-
-vim.keymap.set("n", "<leader>p", function()
+map("n", "<leader>p", function()
   local dir = vim.fn.expand("%:.")
   local formatted = dir:gsub("/", "."):gsub("%.py$", "")
   local output = "from " .. formatted .. " import"
-  vim.fn.setreg("0", output) -- yank register
+  vim.fn.setreg("0", output)
   vim.fn.setreg("+", output)
   vim.notify("Relative path copied to clipboard", vim.log.levels.INFO)
-end, { noremap = true, silent = true, desc = "Copy current file directory" })
+end, { noremap = true, silent = true })
 
-vim.keymap.set({ "n", "i" }, "<F1>", function()
+map({ "n", "i" }, "<F1>", function()
   local var = vim.fn.input("(Python) Print: ")
-  if var == "" then
-    return
-  end
-
-  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  if var == "" then return end
+  local row = unpack(vim.api.nvim_win_get_cursor(0))
   local current_line = vim.api.nvim_get_current_line()
   local indent = current_line:match("^%s*") or ""
   local line = indent .. string.format('print(f"%s={%s}")', var, var)
-
   if vim.api.nvim_get_mode().mode:match("^i") then
-    vim.api.nvim_feedkeys(
-      vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
-      "n",
-      true
-    )
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
   end
-
-  vim.api.nvim_buf_set_text(
-    0,          -- current buffer
-    row - 1,    -- line (0-indexed)
-    0,          -- start column (align with line indentation)
-    row - 1,    -- end line
-    0,          -- end column
-    { line }    -- text to insert
-  )
+  vim.api.nvim_buf_set_text(0, row - 1, 0, row - 1, 0, { line })
 end)
 
+map({"n", "i"}, "<F2>", function()
+  local input = vim.fn.input("Calculator: ")
+  local solver = load("return " .. input)
+  if not solver then
+    vim.api.nvim_echo({{"Invalid Math!", "ErrorMsg"}}, true, {})
+    return
+  end
+  local ok, result = pcall(solver)
+  if ok and type(result) == "number" then
+    local result_value = " " .. tostring(result)
+    if vim.api.nvim_get_mode().mode == "i" then
+      vim.api.nvim_feedkeys(result_value, "n", false)
+    else
+      vim.api.nvim_put({result_value}, "c", true, true)
+    end
+    return
+  end
+  vim.api.nvim_echo({{"Invalid Math!", "ErrorMsg"}}, true, {})
+end, { desc = "Calculate and insert math", silent = true })
 
-
-vim.keymap.set({"n","i","t"}, "<F6>", function()
-  vim.cmd("terminal")
-  vim.cmd("startinsert")
-end, { noremap = true, silent = true, desc = "Open terminal buffer" })
-
-vim.keymap.set({"n","i","t"}, "<F12>", function()
+-- TERMINAL
+map({"n","i","t"}, "<F6>", "<Cmd>terminal<CR><Cmd>startinsert<CR>", { noremap = true, silent = true })
+map({"n","i","t"}, "<F12>", function()
   local mode = vim.fn.mode()
   if mode == "i" then
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
@@ -190,63 +163,29 @@ vim.keymap.set({"n","i","t"}, "<F12>", function()
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true), "n", true)
   end
   vim.cmd("bd!")
-end, { noremap = true, silent = true, desc = "Close buffer" })
+end, { noremap = true, silent = true })
+map({ "n", "t" }, "<C-Up>", [[<C-\><C-n><C-w>k]], { desc = "Move Up", remap = false })
+map({ "n", "t" }, "<C-Down>", [[<C-\><C-n><C-w>j]], { desc = "Move Down", remap = false })
 
-vim.keymap.set({ "n", "t" }, "<C-Up>", [[<C-\><C-n><C-w>k]], { desc = "Move Up", remap = false })
-vim.keymap.set({ "n", "t" }, "<C-Down>", [[<C-\><C-n><C-w>j]], { desc = "Move Down", remap = false })
-
-vim.keymap.set({"n", "i"}, "<F2>", function()
-  local input = vim.fn.input("Calculator: ")
-  local solver, err = load("return " .. input)
-
-  if not solver then
-    vim.api.nvim_echo({{"Invalid Math!", "ErrorMsg"}}, true, {})
-    return
-  end
-
-  local ok, result = pcall(solver)
-  if ok and type(result) == "number" then
-    local result_value = " " .. tostring(result)
-    local mode = vim.api.nvim_get_mode().mode
-    if mode == "i" then
-      vim.api.nvim_feedkeys(result_value, "n", false)
-    else
-      vim.api.nvim_put({result_value}, "c", true, true)
-    end
-    return
-  end
-
-  vim.api.nvim_echo({{"Invalid Math!", "ErrorMsg"}}, true, {})
-end, { 
-    desc = "Calculate and insert math", 
-    silent = true 
-  })
-
--- DISABLED KEYMAPS
+-- 8. DEAD KEYS
 local modes = { "n", "i", "v", "x", "s", "o", "t", "c" }
 for _, mode in ipairs(modes) do
-  vim.keymap.set(mode, "<C-W><Up>", "<NOP>", { noremap = true, silent = true })
-  vim.keymap.set(mode, "<C-W><Down>", "<NOP>", { noremap = true, silent = true })
+  map(mode, "<C-W><Up>", "<NOP>", { noremap = true, silent = true })
+  map(mode, "<C-W><Down>", "<NOP>", { noremap = true, silent = true })
 end
-vim.keymap.set({"i","n","v","c"}, "<Insert>", "<Nop>", { noremap = true, silent = true })
-vim.keymap.set({ "n", "i", "v", "x", "o", "c", "t" }, "<C-/>", "<Nop>", { noremap = true, silent = true })
-vim.keymap.set("n", "Q", "<Nop>", { noremap = true })
-vim.keymap.set("n", "q", "<Nop>", { noremap = true })
-vim.keymap.set("n", "<C-q>", "<Nop>", { noremap = true })
-vim.keymap.set("n", "@", "<Nop>", { noremap = true })
-vim.keymap.set("n", "@@", "<Nop>", { noremap = true })
-vim.keymap.set("n", "<C-S-Up>", "<Nop>", { noremap = true, silent = true })
-vim.keymap.set("n", "<C-S-Down>", "<Nop>", { noremap = true, silent = true })
-vim.keymap.set({ "n", "v" }, "<Tab>", "<Nop>", { noremap = true, silent = true, desc = "Nothing" })
-vim.keymap.set({'n','v'}, 'H', '<Nop>')
-vim.keymap.set({'n','v'}, 'J', '<Nop>')
-vim.keymap.set({'n','v'}, 'K', '<Nop>')
-vim.keymap.set({'n','v'}, 'L', '<Nop>')
-vim.keymap.set({"n","v","c"}, "<leader>g", "<Nop>", { noremap = true, silent = true })
-vim.keymap.set({"n","v","c"}, "<leader>f", "<Nop>", { noremap = true, silent = true })
-vim.keymap.set({"n","v","c"}, "<leader>d", "<Nop>", { noremap = true, silent = true })
-vim.keymap.set({"n","v","c"}, "<leader>b", "<Nop>", { noremap = true, silent = true })
-vim.keymap.set({"n","v","c"}, "<leader>|", "<Nop>", { noremap = true, silent = true })
-vim.keymap.set({"n","v","c"}, "<leader>`", "<Nop>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>R", "<Nop>", { noremap = true, silent = true })
---END OF FILE
+map({"i","n","v","c"}, "<Insert>", "<Nop>", { noremap = true, silent = true })
+map({ "n", "i", "v", "x", "o", "c", "t" }, "<C-/>", "<Nop>", { noremap = true, silent = true })
+map("n", "Q", "<Nop>", { noremap = true })
+map("n", "q", "<Nop>", { noremap = true })
+map("n", "<C-q>", "<Nop>", { noremap = true })
+map("n", "@", "<Nop>", { noremap = true })
+map("n", "@@", "<Nop>", { noremap = true })
+map("n", "<C-S-Up>", "<Nop>", { noremap = true, silent = true })
+map("n", "<C-S-Down>", "<Nop>", { noremap = true, silent = true })
+map({ "n", "v" }, "<C-S-Right>", "<Nop>", { noremap = true, silent = true })
+map({ "n", "v" }, "<C-S-Left>", "<Nop>", { noremap = true, silent = true })
+map({'n','v'}, 'H', '<Nop>')
+map({'n','v'}, 'J', '<Nop>')
+map({'n','v'}, 'K', '<Nop>')
+map({'n','v'}, 'L', '<Nop>')
+-- END OF FILE

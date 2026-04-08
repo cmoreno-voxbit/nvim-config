@@ -158,7 +158,7 @@ end, { desc = "Calculate and insert math", silent = true })
 vim.keymap.set({ "n", "i" }, "<F7>", function()
   local link = vim.fn.input("YouTube Link: ")
   if link == "" then return end
-  vim.cmd(string.format('split | term yt-dlp --netrc -x --audio-format mp3"%s"', link))
+  vim.cmd(string.format('split | term yt-dlp --netrc -x --audio-format mp3 "%s"', link))
 end)
 
 -- TERMINAL

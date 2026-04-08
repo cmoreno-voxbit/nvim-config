@@ -12,23 +12,14 @@ map({ "n", "x" }, "d", '"_d', { noremap = true, silent = true, desc = "Delete wi
 map("n", "dd", '"_dd', { noremap = true, silent = true, desc = "Delete line without yanking" })
 map("n" ,"<Tab>y","yiw", {noremap = true, silent = true, desc = "Yank"})
 map("n", "<Tab>c", '"_ciw', { noremap = true, silent = true, desc = "Change"})
--- map( {"n","t"} ,"<Tab>p",'viw"_dP', {noremap = true, silent = true, desc = "Paste Inside Word"})
-map({ "n", "t" }, "<Tab>p", function()
-  local mode = vim.api.nvim_get_mode().mode
-  if mode == "t" then
-    local text = vim.fn.getreg("+")
-    vim.api.nvim_feedkeys(text, "n", false)
-  else
-    vim.cmd('normal! viw"_dP')
-  end
-end, { noremap = true, silent = true, desc = "Paste" })
+map( {"n","t"} ,"<Tab>p",'viw"_dP', {noremap = true, silent = true, desc = "Paste Inside Word"})
 
--- test=Cristopher
--- test=Cristopher
--- test=Cristopher
--- test=Cristopher
--- test=Cristopher
--- test=Cristopher
+-- test=value
+-- test=value
+-- test=value
+-- test=value
+-- test=value
+-- test=value
 
 -- 3. MOVING AROUND
 map("n", "gg", "gg_", { noremap = true, silent = true })

@@ -72,13 +72,18 @@ map({ "n", "v" }, "<Tab><Right>", "$", { noremap = true, silent = true })
 map({ "n", "v" }, "<Tab><Left>", "_", { noremap = true, silent = true })
 map({"n","v"}, "<Tab><Up>", "<Cmd>0<CR><Cmd>normal! _<CR>", { noremap = true, silent = true })
 
+
 map("n", "<Tab>f", function()
   local win = 0
   local cursor = vim.api.nvim_win_get_cursor(win)
   vim.cmd("normal! ggVG=")
+  vim.lsp.buf.code_action({
+    context = { only = { "source.organizeImports" } },
+    apply = true
+  })
   vim.api.nvim_win_set_cursor(win, cursor)
   vim.cmd("normal! zz")
-end, { noremap = true, silent = true, desc = "Format file" })
+end, { noremap = true, silent = true, desc = "Form"})
 
 -- 7. BIG TOOLS
 map("n", "<leader>m", "<Cmd>Mason<CR>", { noremap = true, silent = true })

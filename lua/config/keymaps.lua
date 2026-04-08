@@ -156,7 +156,7 @@ map({"n", "i"}, "<F2>", function()
 end, { desc = "Calculate and insert math", silent = true })
 
 vim.keymap.set({ "n", "i" }, "<F7>", function()
-  local link = vim.fn.input("YouTube Link: ")
+  local link = vim.fn.input("Link: ")
   if link == "" then return end
   local command = string.format('split | term python3 -m pip install yt-dlp; yt-dlp --netrc -x --audio-format mp3 "%s" ; exit', link)
   vim.cmd(command)

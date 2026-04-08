@@ -13,8 +13,7 @@ map("n", "dd", '"_dd', { noremap = true, silent = true, desc = "Delete line with
 map("n", "C", '"_ciw', { noremap = true, silent = true })
 map("n", "p", '"_dP', { noremap = true, silent = true })
 map("n", "P", 'viw"_dP', { noremap = true, silent = true })
-map("n", "yy", "_y_", { noremap = true, silent = true })
-map("n", "Y", "yiw", { noremap = true, silent = true })
+map("n", "P", 'viw"_dP', { noremap = true, silent = true })
 
 -- 3. MOVING AROUND
 map("n", "gg", "gg_", { noremap = true, silent = true })

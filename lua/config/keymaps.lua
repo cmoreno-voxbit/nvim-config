@@ -11,7 +11,7 @@ map("n", "D", '"_ld$', { desc = "Delete until EOL (exclude cursor)" })
 map({ "n", "x" }, "d", '"_d', { noremap = true, silent = true, desc = "Delete without yanking" })
 map("n", "dd", '"_dd', { noremap = true, silent = true, desc = "Delete line without yanking" })
 map("n" ,"<Tab>y","yiw", {noremap = true, silent = true, desc = "Yank Inside Word"})
-map("n" ,"<Tab>p",'viw"_dP', {noremap = true, silent = true, desc = "Paste Inside Word"})
+map( {"n","t"} ,"<Tab>p",'viw"_dP', {noremap = true, silent = true, desc = "Paste Inside Word"})
 map("n", "<Tab>c", '"_ciw', { noremap = true, silent = true, desc = "Change Inside Word"})
 
 -- 3. MOVING AROUND

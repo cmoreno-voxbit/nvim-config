@@ -62,12 +62,6 @@ for trigger, target in pairs(delimiters) do
 end
 
 -- 6. TAB RULES
-map("n", "<Tab>si", "<Cmd>normal! _Vii_<CR>", { silent = true, desc = "Select Inside Indentation" })
-map("n", "<Tab>sf", "<Cmd>normal! _Vaf_<CR>", { silent = true, desc = "Select Around Function" })
-map("n", "<Tab>sc", "<Cmd>normal! _Vac_<CR>", { silent = true, desc = "Select Around Class" })
-map("n", "<Tab>sp", "<Cmd>normal! _Vip_<CR>", { silent = true, desc = "Select Inside Paragraph" })
-map("n", "<Tab>sa", "<Cmd>normal! _Vai_<CR>", { silent = true, desc = "Select Around Indentation" })
-
 map({ "n", "v" }, "<Tab><Right>", "$", { noremap = true, silent = true })
 map({ "n", "v" }, "<Tab><Left>", "_", { noremap = true, silent = true })
 map({"n","v"}, "<Tab><Up>", "<Cmd>0<CR><Cmd>normal! _<CR>", { noremap = true, silent = true })
@@ -83,7 +77,7 @@ map("n", "<Tab>f", function()
   })
   vim.api.nvim_win_set_cursor(win, cursor)
   vim.cmd("normal! zz")
-end, { noremap = true, silent = true, desc = "Form"})
+end, { noremap = true, silent = true, desc = "Format File"})
 
 -- 7. BIG TOOLS
 map("n", "<leader>m", "<Cmd>Mason<CR>", { noremap = true, silent = true })

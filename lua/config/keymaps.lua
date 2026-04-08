@@ -14,12 +14,6 @@ map("n" ,"<Tab>y","yiw", {noremap = true, silent = true, desc = "Yank"})
 map("n", "<Tab>c", '"_ciw', { noremap = true, silent = true, desc = "Change"})
 map( {"n","t"} ,"<Tab>p",'viw"_dP', {noremap = true, silent = true, desc = "Paste Inside Word"})
 
--- test=value
--- test=value
--- test=value
--- test=value
--- test=value
--- test=value
 
 -- 3. MOVING AROUND
 map("n", "gg", "gg_", { noremap = true, silent = true })

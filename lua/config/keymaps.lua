@@ -10,10 +10,9 @@ map("n", "<leader>fg", require("telescope.builtin").live_grep, { desc = "Find Gr
 map("n", "D", '"_ld$', { desc = "Delete until EOL (exclude cursor)" })
 map({ "n", "x" }, "d", '"_d', { noremap = true, silent = true, desc = "Delete without yanking" })
 map("n", "dd", '"_dd', { noremap = true, silent = true, desc = "Delete line without yanking" })
-map("n", "C", '"_ciw', { noremap = true, silent = true })
-map("n", "p", '"_dP', { noremap = true, silent = true })
-map("n", "P", 'viw"_dP', { noremap = true, silent = true })
-map("n", "P", 'viw"_dP', { noremap = true, silent = true })
+map("n" ,"<Tab>y","yiw", {noremap = true, silent = true, desc = "Yank Inside Word"})
+map("n" ,"<Tab>p",'viw"_dP', {noremap = true, silent = true, desc = "Paste Inside Word"})
+map("n", "<Tab>c", '"_ciw', { noremap = true, silent = true, desc = "Change Inside Word"})
 
 -- 3. MOVING AROUND
 map("n", "gg", "gg_", { noremap = true, silent = true })
@@ -195,4 +194,7 @@ map({'n','v'}, 'H', '<Nop>')
 map({'n','v'}, 'J', '<Nop>')
 map({'n','v'}, 'K', '<Nop>')
 map({'n','v'}, 'L', '<Nop>')
+map({'n','v'}, 'C', '<Nop>')
+map({'n','v'}, 'Y', '<Nop>')
+map({'n','v'}, 'P', '<Nop>')
 -- END OF FILE

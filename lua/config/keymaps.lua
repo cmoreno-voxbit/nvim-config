@@ -12,6 +12,7 @@ map({ "n", "x" }, "d", '"_d', { noremap = true, silent = true, desc = "Delete wi
 map("n", "dd", '"_dd', { noremap = true, silent = true, desc = "Delete line without yanking" })
 map("n" ,"<Tab>y","yiw", {noremap = true, silent = true, desc = "Yank"})
 map("n", "<Tab>c", '"_ciw', { noremap = true, silent = true, desc = "Change"})
+map("n", "C", '"_ciw', { noremap = true, silent = true, desc = "Change"})
 map( {"n","t"} ,"<Tab>p",'viw"_dP', {noremap = true, silent = true, desc = "Paste Inside Word"})
 
 
@@ -195,7 +196,7 @@ map({'n','v'}, 'H', '<Nop>')
 map({'n','v'}, 'J', '<Nop>')
 map({'n','v'}, 'K', '<Nop>')
 map({'n','v'}, 'L', '<Nop>')
-map({'n','v'}, 'C', '<Nop>')
+-- map({'n','v'}, 'C', '<Nop>')
 map({'n','v'}, 'Y', '<Nop>')
 map({'n','v'}, 'P', '<Nop>')
 -- END OF FILE

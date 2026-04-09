@@ -34,7 +34,7 @@ map({ "n", "v" }, "j", "jzz", { noremap = true, silent = true })
 map({ "n", "v" }, "<Tab>s", function()
   vim.cmd("normal! _")
   MiniIndentscope.move_cursor('bottom')
-  vim.cmd("normal! kzz")
+  vim.cmd("normal! zz")
 end, { noremap = true, silent = true, desc = "Jump to Bottom of Scope" })
 
 -- PAGE JUMPS

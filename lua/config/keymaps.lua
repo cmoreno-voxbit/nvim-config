@@ -161,6 +161,15 @@ vim.keymap.set({ "n", "i" }, "<F7>", function()
   vim.cmd(command)
 end)
 
+vim.keymap.set({"n","v"}, "<Tab>s", function()
+  vim.cmd("normal! V")
+  vim.cmd("normal! $")
+  vim.cmd("normal! _")
+  vim.cmd("normal! ]i")
+  vim.cmd("normal! k")
+end, { desc = "Select block" })
+
+
 -- TERMINAL
 map({"n","i","t"}, "<F6>", "<Cmd>terminal<CR><Cmd>startinsert<CR>", { noremap = true, silent = true })
 map({"n","i","t"}, "<F12>", function()

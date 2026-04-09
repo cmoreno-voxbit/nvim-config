@@ -31,6 +31,11 @@ map("n", "<S-Down>", "<Down>0_zz", { noremap = true, silent = true })
 map("n", "<BS>", "_zz", { noremap = true, silent = true })
 map({ "n", "v" }, "k", "kzz", { noremap = true, silent = true })
 map({ "n", "v" }, "j", "jzz", { noremap = true, silent = true })
+map({ "n", "v" }, "<Tab>s", function()
+  vim.cmd("normal! _")
+  MiniIndentscope.move_cursor('bottom')
+  vim.cmd("normal! kzz")
+end, { noremap = true, silent = true, desc = "Jump to Bottom of Scope" })
 
 -- PAGE JUMPS
 map({ "n", "v" }, "<PageDown>", "<C-d>zz0", { desc = "Go half page down" })

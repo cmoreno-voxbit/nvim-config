@@ -126,6 +126,14 @@ map("n", "<leader>p", function()
   vim.notify("Relative path copied to clipboard", vim.log.levels.INFO)
 end, { noremap = true, silent = true })
 
+map("n", "<Tab>.", function()
+  vim.cmd("edit $HOME/.config/nvim/lua/config/keymaps.lua")
+  vim.notify("Edit Keymaps!")
+end, {
+    desc = "Edit keymaps file",
+    noremap = true,
+  })
+
 map({ "n", "i" }, "<F1>", function()
   local var = vim.fn.input("(Python) Print: ")
   if var == "" then return end

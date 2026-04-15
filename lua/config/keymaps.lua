@@ -21,7 +21,6 @@ map("n", "gg", "gg_", { noremap = true, silent = true })
 map("n", "G", "G_", { noremap = true, silent = true })
 map("n", "$", "$h", { noremap = true, silent = true })
 map({ "n", "v" }, "<Home>", "_", { noremap = true, silent = true })
-
 map("n", "<C-d>", "<Cmd>normal! <C-d>zz0<CR>", { noremap = true, silent = true })
 map("n", "<C-u>", "<Cmd>normal! <C-u>zz0<CR>", { noremap = true, silent = true })
 map({ "n", "v", "x" }, "<Up>", "<Up>zz", { noremap = true, silent = true })

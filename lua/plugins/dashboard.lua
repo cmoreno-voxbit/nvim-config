@@ -1,15 +1,25 @@
 return {
+  { "nvim-dashboard/dashboard-nvim", enabled = false },
+  { "nvim-mini/mini.starter", enabled = false },
   {
     "goolord/alpha-nvim",
-    lazy = false, 
+    lazy = false,
     priority = 1000,
-    opts = function(_, dashboard)
-      local logo = [[ NVIM ]]
-      dashboard.section.header.val = vim.split(logo, "\n")
-      return dashboard
-    end,
-    config = function(_, opts)
-      require("alpha").setup(opts)
+    config = function()
+      local alpha = require("alpha")
+      local dashboard = require("alpha.themes.dashboard")
+
+      dashboard.section.header.val = {
+        "    ",
+        "NVIM",
+        "    ",
+      }
+
+      dashboard.section.buttons.val = {
+        -- NO BUTTONS
+      }
+
+      alpha.setup(dashboard.config)
     end,
   },
 }

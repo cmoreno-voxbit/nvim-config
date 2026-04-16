@@ -178,6 +178,18 @@ end)
 
 -- TERMINAL
 map({"n","i","t"}, "<F6>", "<Cmd>terminal<CR><Cmd>startinsert<CR>", { noremap = true, silent = true })
+
+map({"n","i","t"}, "<F4>", function()
+  local mode = vim.fn.mode()
+  if mode == "i" then
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+  elseif mode == "t" then
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true), "n", true)
+  end
+  vim.cmd("bd!")
+end, { noremap = true, silent = true })
+
+
 map({"n","i","t"}, "<F12>", function()
   local mode = vim.fn.mode()
   if mode == "i" then
@@ -187,6 +199,7 @@ map({"n","i","t"}, "<F12>", function()
   end
   vim.cmd("bd!")
 end, { noremap = true, silent = true })
+
 map({ "n", "t" }, "<C-Up>", [[<C-\><C-n><C-w>k]], { desc = "Move Up", remap = false })
 map({ "n", "t" }, "<C-Down>", [[<C-\><C-n><C-w>j]], { desc = "Move Down", remap = false })
 

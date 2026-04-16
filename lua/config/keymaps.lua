@@ -189,7 +189,6 @@ map({"n","i","t"}, "<F4>", function()
   vim.cmd("bd!")
 end, { noremap = true, silent = true })
 
-
 map({"n","i","t"}, "<F12>", function()
   local mode = vim.fn.mode()
   if mode == "i" then

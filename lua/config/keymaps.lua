@@ -7,13 +7,13 @@ end, { desc = "Find Files" })
 map("n", "<leader>fg", require("telescope.builtin").live_grep, { desc = "Find Grep" })
 
 -- 2. DELETING & YANKING
-map("n", "D", '"_ld$', { desc = "Delete until EOL (exclude cursor)" })
+map("n", "D", '"_ld$', { desc = "[D]elete until EOL" })
 map({ "n", "x" }, "d", '"_d', { noremap = true, silent = true, desc = "Delete without yanking" })
 map("n", "dd", '"_dd', { noremap = true, silent = true, desc = "Delete line without yanking" })
-map("n" ,"<Tab>y","yiw", {noremap = true, silent = true, desc = "Yank"})
-map("n", "<Tab>c", '"_ciw', { noremap = true, silent = true, desc = "Change"})
-map("n", "C", '"_ciw', { noremap = true, silent = true, desc = "Change"})
-map( {"n","t"} ,"<Tab>p",'viw"_dP', {noremap = true, silent = true, desc = "Paste Inside Word"})
+map("n" ,"<Tab>y","yiw", {noremap = true, silent = true, desc = "[y]ank"})
+map("n", "<Tab>c", '"_ciw', { noremap = true, silent = true, desc = "[c]hange"})
+map("n", "C", '"_ciw', { noremap = true, silent = true, desc = "[C]hange"})
+map( {"n","t"} ,"<Tab>p",'viw"_dP', {noremap = true, silent = true, desc = "[p]aste inside Word"})
 
 
 -- 3. MOVING AROUND
@@ -30,13 +30,13 @@ map("n", "<S-Down>", "<Down>0_zz", { noremap = true, silent = true })
 map("n", "<BS>", "_zz", { noremap = true, silent = true })
 map({ "n", "v" }, "k", "kzz", { noremap = true, silent = true })
 map({ "n", "v" }, "j", "jzz", { noremap = true, silent = true })
-map({"n"}, "<Tab>q", function()
+map({"n"}, "<Tab>s", function()
   vim.cmd("normal! mm")
   vim.cmd("normal! Vip=")
   vim.cmd("normal! `m")
   vim.cmd("normal! zz")
   vim.cmd("delmarks m")
-end, { noremap = true, silent = true, desc = "Quick Sort" })
+end, { noremap = true, silent = true, desc = "Format [s]election" })
 
 
 -- PAGE JUMPS
